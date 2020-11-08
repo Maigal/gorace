@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/leg.png-9af7df361751bdb4598e8ee75e27cbda.stex"
+path="res://.import/eyes.png-ce329f4b8907765482ac946259812b7c.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/leg.png"
-dest_files=[ "res://.import/leg.png-9af7df361751bdb4598e8ee75e27cbda.stex" ]
+source_file="res://Sprites/Player/eyes.png"
+dest_files=[ "res://.import/eyes.png-ce329f4b8907765482ac946259812b7c.stex" ]
 
 [params]
 

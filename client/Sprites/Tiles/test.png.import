@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/eyes.png-dcaaa5d40c54a4f3cc5ae610d45221ef.stex"
+path="res://.import/test.png-c9ebb025d55f4d16ea1fea375662a6df.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Sprites/eyes.png"
-dest_files=[ "res://.import/eyes.png-dcaaa5d40c54a4f3cc5ae610d45221ef.stex" ]
+source_file="res://Sprites/Tiles/test.png"
+dest_files=[ "res://.import/test.png-c9ebb025d55f4d16ea1fea375662a6df.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
