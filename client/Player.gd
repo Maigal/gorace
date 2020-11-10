@@ -5,6 +5,8 @@ const JUMP_FORCE = 700
 const GRAVITY = 30
 const MAX_FALL_SPEED = 1000
 
+onready var anim_player = $AnimationPlayer
+
 var y_velocity = 0
 var x_velocity = 0
 
@@ -49,19 +51,18 @@ func moveY(isGrounded):
 		y_velocity = -JUMP_FORCE
 		
 func animate(xDirection, isGrounded):
-	pass
-#	if isGrounded:
-#		if xDirection == 0:
-#			play_animation("idle")
-#		else:
-#			play_animation("run")
-#	else:
-#		if y_velocity > 5:
-#			play_animation("fall")
-#		else: 
-#			play_animation("jump")
-#
-#func play_animation(anim_name):
-#	if anim_player.is_playing() and anim_player.current_animation == anim_name:
-#		return
-#	anim_player.play(anim_name)
+	if isGrounded:
+		if xDirection == 0:
+			play_animation("idle")
+		else:
+			play_animation("run")
+	else:
+		if y_velocity > 5:
+			play_animation("fall")
+		else: 
+			play_animation("jump")
+
+func play_animation(anim_name):
+	if anim_player.is_playing() and anim_player.current_animation == anim_name:
+		return
+	anim_player.play(anim_name)
