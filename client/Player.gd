@@ -21,6 +21,7 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	
 	if wallJumpKnockback > 0:
 		wallJumpKnockback -= 2
 	elif wallJumpKnockback < 0:
@@ -78,11 +79,15 @@ func moveY(isGrounded):
 	if y_velocity > MAX_FALL_SPEED:
 		y_velocity = MAX_FALL_SPEED
 	
-	print(is_on_wall())	
+#	print(is_on_wall())	
+
+	var wallCollider = false
+	if $Rig/RayCast2D.is_colliding() and $Rig/RayCast2D.get_collider().is_in_group("terrain"):
+		wallCollider = true
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
-	elif is_on_wall() and Input.is_action_just_pressed("jump") and canWallJump:
+	elif wallCollider and Input.is_action_just_pressed("jump") and canWallJump:
 		y_velocity = -JUMP_FORCE * 0.65
 		wallJumpKnockback = 200 * -player_direction
 		
