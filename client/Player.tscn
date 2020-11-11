@@ -416,13 +416,21 @@ __meta__ = {
 "_edit_horizontal_guides_": [ 22.3129 ]
 }
 
-[node name="Rig" type="Node2D" parent="."]
+[node name="Colliders" type="Node2D" parent="."]
 
-[node name="WallCollider" type="RayCast2D" parent="Rig"]
+[node name="WallCollider_Right" type="RayCast2D" parent="Colliders"]
 position = Vector2( 0, 10 )
 enabled = true
-cast_to = Vector2( 25, 0 )
+cast_to = Vector2( 15, 0 )
 collision_mask = 2147483650
+
+[node name="WallCollider_Left" type="RayCast2D" parent="Colliders"]
+position = Vector2( 0, 10 )
+enabled = true
+cast_to = Vector2( -15, 0 )
+collision_mask = 2147483650
+
+[node name="Rig" type="Node2D" parent="."]
 
 [node name="Body" type="Sprite" parent="Rig"]
 texture = ExtResource( 1 )

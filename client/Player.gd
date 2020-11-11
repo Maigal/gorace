@@ -9,6 +9,8 @@ const MAX_WALL_SLIDE_SPEED = 120
 const MAX_WALL_JUMP_KNOCKBACK = 200
 
 onready var anim_player = $AnimationPlayer
+onready var leftCollider = $Colliders/WallCollider_Left
+onready var rightCollider = $Colliders/WallCollider_Right
 
 var y_velocity = 0
 var x_velocity = 0
@@ -49,13 +51,18 @@ func _physics_process(delta):
 		
 func moveX(direction):
 	var knockbackMovespeed = 1
-	if (wallJumpKnockback > 0):
+	if (wallJumpKnockback != 0):
 		if (wallJumpDirection != player_direction):
-			knockbackMovespeed = max((wallJumpKnockback * 100 / MAX_WALL_JUMP_KNOCKBACK), 1)
+			if wallJumpDirection == 1:
+				knockbackMovespeed = max((wallJumpKnockback * 100 / MAX_WALL_JUMP_KNOCKBACK), 1)
+			elif wallJumpDirection == -1:
+				knockbackMovespeed = min((wallJumpKnockback * 100 / MAX_WALL_JUMP_KNOCKBACK), -1)
 		else:
 			knockbackMovespeed = 2
+			
 	
-	move_and_slide(Vector2((direction * MOVE_SPEED / knockbackMovespeed) + wallJumpKnockback, y_velocity), Vector2.UP)
+	
+	move_and_slide(Vector2((direction * (MOVE_SPEED / knockbackMovespeed)) + wallJumpKnockback, y_velocity), Vector2.UP)
 	if direction != 0:
 		if direction > 0:
 			player_direction = 1
@@ -90,18 +97,23 @@ func moveY(isGrounded):
 	
 #	print(is_on_wall())	
 
-	var wallCollider = false
-	if $Rig/WallCollider.is_colliding() and $Rig/WallCollider.get_collider().is_in_group("terrain"):
-		wallCollider = true
-		
-	print(canWallJump)
+	var wallCollider = null
+	if rightCollider.is_colliding() and rightCollider.get_collider().is_in_group("terrain"):
+		wallCollider = "right"
+	elif leftCollider.is_colliding() and leftCollider.get_collider().is_in_group("terrain"):
+		wallCollider = "left"
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
 	elif wallCollider and Input.is_action_just_pressed("jump") and (canWallJump or wallJumpDirection != -player_direction):
+		var dir
+		if wallCollider == "right":
+			dir = -1
+		elif wallCollider == "left":
+			dir = 1
 		y_velocity = -JUMP_FORCE * 0.65
-		wallJumpKnockback = MAX_WALL_JUMP_KNOCKBACK * -player_direction
-		wallJumpDirection = -player_direction
+		wallJumpKnockback = MAX_WALL_JUMP_KNOCKBACK * dir
+		wallJumpDirection = 1 * dir
 		canWallJump = false
 		
 		
