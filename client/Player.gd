@@ -1,12 +1,12 @@
 extends KinematicBody2D
 
 const MOVE_SPEED = 300
-const JUMP_FORCE = 700
+const JUMP_FORCE = 675
 const GRAVITY = 30
 const MAX_FALL_SPEED = 1000
 const WALL_SLIDE_ACCELERATION = 10
 const MAX_WALL_SLIDE_SPEED = 120
-const MAX_WALL_JUMP_KNOCKBACK = 200
+const MAX_WALL_JUMP_KNOCKBACK = 225
 
 onready var anim_player = $AnimationPlayer
 onready var leftCollider = $Colliders/WallCollider_Left
@@ -27,9 +27,9 @@ func _physics_process(delta):
 	
 	
 	if wallJumpKnockback > 0:
-		wallJumpKnockback -= 4
+		wallJumpKnockback -= 5
 	elif wallJumpKnockback < 0:
-		wallJumpKnockback += 4	
+		wallJumpKnockback += 5	
 		
 	var isGrounded = is_on_floor()
 	
@@ -124,10 +124,13 @@ func animate(xDirection, isGrounded):
 		else:
 			play_animation("run")
 	else:
-		if y_velocity > 5:
-			play_animation("fall")
-		else: 
-			play_animation("jump")
+		if isWallSliding:
+			play_animation("wallslide")
+		else:
+			if y_velocity > 5:
+				play_animation("fall")
+			else: 
+				play_animation("jump")
 
 func play_animation(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:
