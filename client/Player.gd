@@ -6,6 +6,7 @@ const GRAVITY = 30
 const MAX_FALL_SPEED = 1000
 const WALL_SLIDE_ACCELERATION = 10
 const MAX_WALL_SLIDE_SPEED = 120
+const MAX_WALL_JUMP_KNOCKBACK = 200
 
 onready var anim_player = $AnimationPlayer
 
@@ -13,6 +14,7 @@ var y_velocity = 0
 var x_velocity = 0
 var isWallSliding = false
 var wallJumpKnockback = 0
+var wallJumpDirection = 1
 var canWallJump = true
 var player_direction = 1
 
@@ -23,9 +25,9 @@ func _physics_process(delta):
 	
 	
 	if wallJumpKnockback > 0:
-		wallJumpKnockback -= 2
+		wallJumpKnockback -= 4
 	elif wallJumpKnockback < 0:
-		wallJumpKnockback += 2	
+		wallJumpKnockback += 4	
 		
 	var isGrounded = is_on_floor()
 	
@@ -46,7 +48,14 @@ func _physics_process(delta):
 	animate(movementX_direction, isGrounded)
 		
 func moveX(direction):
-	move_and_slide(Vector2((direction * MOVE_SPEED) + wallJumpKnockback, y_velocity), Vector2.UP)
+	var knockbackMovespeed = 1
+	if (wallJumpKnockback > 0):
+		if (wallJumpDirection != player_direction):
+			knockbackMovespeed = max((wallJumpKnockback * 100 / MAX_WALL_JUMP_KNOCKBACK), 1)
+		else:
+			knockbackMovespeed = 2
+	
+	move_and_slide(Vector2((direction * MOVE_SPEED / knockbackMovespeed) + wallJumpKnockback, y_velocity), Vector2.UP)
 	if direction != 0:
 		if direction > 0:
 			player_direction = 1
@@ -82,14 +91,18 @@ func moveY(isGrounded):
 #	print(is_on_wall())	
 
 	var wallCollider = false
-	if $Rig/RayCast2D.is_colliding() and $Rig/RayCast2D.get_collider().is_in_group("terrain"):
+	if $Rig/WallCollider.is_colliding() and $Rig/WallCollider.get_collider().is_in_group("terrain"):
 		wallCollider = true
+		
+	print(canWallJump)
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
-	elif wallCollider and Input.is_action_just_pressed("jump") and canWallJump:
+	elif wallCollider and Input.is_action_just_pressed("jump") and (canWallJump or wallJumpDirection != -player_direction):
 		y_velocity = -JUMP_FORCE * 0.65
-		wallJumpKnockback = 200 * -player_direction
+		wallJumpKnockback = MAX_WALL_JUMP_KNOCKBACK * -player_direction
+		wallJumpDirection = -player_direction
+		canWallJump = false
 		
 		
 func animate(xDirection, isGrounded):
