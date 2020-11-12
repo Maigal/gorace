@@ -508,7 +508,9 @@ tracks/7/keys = {
 "values": [ -4.54526 ]
 }
 
-[node name="Player" type="KinematicBody2D"]
+[node name="Player" type="KinematicBody2D" groups=[
+"player",
+]]
 collision_mask = 2
 script = ExtResource( 4 )
 __meta__ = {

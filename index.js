@@ -3,6 +3,8 @@ const https = require('https')
 const express = require('express')
 const app = express();
 const path = require('path');
+
+const LoginModule = require('./Server/Events/Login');
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';
@@ -43,7 +45,15 @@ wss.on('connection', function connection(ws) {
   ws.on('message', function incoming(message) {
     let msg = JSON.parse(message.toString())
 
-    console.log('message from client: ', + msg)
+    switch (msg.type) {
+      case "login":
+        const loginResult = LoginModule.login(ws, msg.username, msg.password)
+        ws.send(JSON.stringify({type: "login", ...loginResult}))
+        break;
+
+      default:
+        break;
+    }
 
     // let player = connectedPlayers.find(player => player.uid == ws.uid)
 
