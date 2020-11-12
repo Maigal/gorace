@@ -4,7 +4,7 @@ export var websocket_url = "ws://127.0.0.1:3000"
 
 var _client = WebSocketClient.new()
 
-var nickname = ""
+var nickname
 var userId
 
 func _ready():
@@ -64,10 +64,14 @@ func _on_data():
 			if parsedData.status == "success":
 				nickname = parsedData.nickname
 				userId = parsedData.id
-				get_tree().change_scene("res://Levels/level_0.tscn")
+				get_tree().change_scene("res://Lobby.tscn")
 			elif parsedData.status == "error":
 				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
-	
+		"join_room":
+			if parsedData.status == "success":
+				get_tree().change_scene(parsedData["roomScene"])
+			elif parsedData.status == "error":
+				print(parsedData["error_message"])
 
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals
@@ -96,6 +100,12 @@ func on_pressed_login(username, password):
 		password = password
 	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
-	print(username, password)
 
 	
+func on_join_room(roomType, room):
+	var message = {
+		type = "join_room",
+		roomType = roomType,
+		roomCode = room
+	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())

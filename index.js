@@ -5,6 +5,7 @@ const app = express();
 const path = require('path');
 
 const LoginModule = require('./Server/Events/Login');
+const RoomModule = require('./Server/Events/Room');
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';
@@ -48,8 +49,13 @@ wss.on('connection', function connection(ws) {
     switch (msg.type) {
       case "login":
         const loginResult = LoginModule.login(ws, msg.username, msg.password)
+        ws.playerId = loginResult.id
         ws.send(JSON.stringify({type: "login", ...loginResult}))
         break;
+
+      case "join_room":
+        const joinRoomResult = RoomModule.join(ws, msg.roomType, msg.roomCode)
+        ws.send(JSON.stringify({type: "join_room", ...joinRoomResult}))
 
       default:
         break;
