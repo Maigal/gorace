@@ -9,7 +9,7 @@ module.exports = {
       if (dbUser.password === password) {
         if (!state.onlinePlayers.find(user => user.id === dbUser.id)) {
           player = {
-            ws: WaveShaperNode,
+            ws: ws,
             id: dbUser.id,
             nickname: dbUser.nickname,
             connectionId: ws.connectionId,

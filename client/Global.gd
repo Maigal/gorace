@@ -6,6 +6,8 @@ var _client = WebSocketClient.new()
 
 var nickname
 var userId
+var roomType
+var roomCode
 
 func _ready():
 	print('global ready')
@@ -69,6 +71,8 @@ func _on_data():
 				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
 		"join_room":
 			if parsedData.status == "success":
+				roomType = parsedData.roomType
+				roomCode = parsedData.roomCode
 				get_tree().change_scene(parsedData["roomScene"])
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
@@ -107,5 +111,13 @@ func on_join_room(roomType, room):
 		type = "join_room",
 		roomType = roomType,
 		roomCode = room
+	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
+func on_joined_room():
+	var message = {
+		type = "joined_room",
+		roomType = roomType,
+		roomCode = roomCode
 	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
