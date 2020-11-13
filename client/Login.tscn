@@ -7,10 +7,10 @@
 size = 48
 font_data = ExtResource( 1 )
 
-[sub_resource type="StyleBoxFlat" id=3]
+[sub_resource type="StyleBoxFlat" id=2]
 bg_color = Color( 0.952941, 0.952941, 0.952941, 1 )
 
-[sub_resource type="DynamicFont" id=2]
+[sub_resource type="DynamicFont" id=3]
 size = 32
 font_data = ExtResource( 1 )
 
@@ -61,8 +61,8 @@ margin_left = 1.12244
 margin_top = 59.0
 margin_right = 221.122
 margin_bottom = 109.0
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 0.976471, 0.976471, 1 )
 __meta__ = {
@@ -81,8 +81,8 @@ margin_left = 1.12244
 margin_top = 186.961
 margin_right = 221.122
 margin_bottom = 236.961
-custom_styles/normal = SubResource( 3 )
-custom_fonts/font = SubResource( 2 )
+custom_styles/normal = SubResource( 2 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/background_color = Color( 1, 0.976471, 0.976471, 1 )
 __meta__ = {
