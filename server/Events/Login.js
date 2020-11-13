@@ -1,5 +1,6 @@
 const db = require('../db.js')
 let state = require('../state.js')
+const Player = require('../Classes/Player');
 
 module.exports = {
 
@@ -8,14 +9,13 @@ module.exports = {
     if (dbUser) {
       if (dbUser.password === password) {
         if (!state.onlinePlayers.find(user => user.id === dbUser.id)) {
-          player = {
+          player = new Player({
             ws: ws,
             id: dbUser.id,
             nickname: dbUser.nickname,
-            connectionId: ws.connectionId,
             currentRoomType: null,
-            currentRoom: null     
-          };
+            currentRoom: null ,
+          });
           state.onlinePlayers.push(player);
           return {
             status: "success",
