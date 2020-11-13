@@ -21,17 +21,22 @@ module.exports = {
             nickname: dbUser.nickname,
             id: dbUser.id,
           }
+        } else {
+          return {
+            status: "error",
+            error_message: "User already logged in!"
+          }
         }
       } else {
         return {
           status: "error",
-          error_message: "Wrong password"
+          error_message: "Wrong password!"
         }
       }
     } else {
       return {
         status: "error",
-        error_message: "Username does not exist"
+        error_message: "Username does not exist!"
       }
     }
   }
