@@ -67,14 +67,17 @@ module.exports = {
       let data = players.filter(p => p.id !== player.id).map(player => {
         return {
           id: player.id,
-          x: player.x,
-          y: player.y,
-          animation: player.animation
+          x: player.x || 0,
+          y: player.y || 0,
+          animation: player.animation || "idle",
+          dir: player.dir || 1
         }
       })
 
-      if (player.readyState && data.length > 0) {
-        player.ws.send(JSON.stringify({type:"room_positions_data", positions: data}))
+      console.log('data', data)
+
+      if (player.ws.readyState && data.length > 0) {
+        player.ws.send(JSON.stringify({type:"update_other_players_positions", players: data}))
       }
     })
   }

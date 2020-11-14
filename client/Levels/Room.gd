@@ -25,3 +25,13 @@ func create_new_player(player):
 	instancedScene.position.x = player.x
 	instancedScene.position.y = player.y
 	$OtherPlayers.add_child(instancedScene)
+
+func update_other_players_positions(players_list):
+	for i in range(players_list.size()):
+		var oPlayerData = players_list[i]
+		var oPlayerInstance = get_node("OtherPlayers/OtherPlayer" + str(oPlayerData.id))
+		if oPlayerInstance:
+			oPlayerInstance.position.x = oPlayerData.x
+			oPlayerInstance.position.y = oPlayerData.y
+			oPlayerInstance.scale.x = oPlayerData.dir
+			oPlayerInstance.playAnimation(oPlayerData.animation)

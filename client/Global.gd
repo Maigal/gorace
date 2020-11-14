@@ -56,10 +56,10 @@ func _on_data():
 	# to receive data from server, and not get_packet directly when not
 	# using the MultiplayerAPI.
 	var data = _client.get_peer(1).get_packet().get_string_from_utf8()
-	print(data)
+#	print(data)
 	var parsedData = JSON.parse(data).result
 	
-	print(parsedData)
+#	print(parsedData)
 	
 	match parsedData["type"]:
 		"login":
@@ -77,12 +77,11 @@ func _on_data():
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
 		"create_other_players":
-			print('AAAAAAAAAAAAAAAAAAAAAAAA')
 			get_tree().call_group("room", "create_other_players", parsedData["players"])
-			print('BBBBBBBBBBBBBBBBBBB')
-			print(parsedData["players"])
 		"create_new_player":
 			get_tree().call_group("room", "create_new_player", parsedData["player"])
+		"update_other_players_positions":
+			get_tree().call_group("room", "update_other_players_positions", parsedData["players"])
 			
 
 func _process(delta):

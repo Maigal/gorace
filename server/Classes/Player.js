@@ -22,11 +22,11 @@ class Player{
       else return value;
   }
 
-  updatePositions(x,y,dir,animation) {
+  updatePositions(x,y,animation,dir) {
     this.x = x
     this.y = y
-    this.dir = dir
     this.animation = animation
+    this.dir = dir
   }
 
   parseForClient() {
