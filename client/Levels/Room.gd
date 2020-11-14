@@ -35,3 +35,6 @@ func update_other_players_positions(players_list):
 			oPlayerInstance.position.y = oPlayerData.y
 			oPlayerInstance.scale.x = oPlayerData.dir
 			oPlayerInstance.playAnimation(oPlayerData.animation)
+			
+func disconnect_player(player_id):
+	get_node("OtherPlayers/OtherPlayer" + str(player_id)).queue_free()

@@ -82,6 +82,8 @@ func _on_data():
 			get_tree().call_group("room", "create_new_player", parsedData["player"])
 		"update_other_players_positions":
 			get_tree().call_group("room", "update_other_players_positions", parsedData["players"])
+		"disconnect_player":
+			get_tree().call_group("room", "disconnect_player", parsedData["playerId"])
 			
 
 func _process(delta):

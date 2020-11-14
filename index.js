@@ -6,6 +6,7 @@ const path = require('path');
 
 const LoginModule = require('./Server/Events/Login');
 const RoomModule = require('./Server/Events/Room');
+const state = require('./Server/state')
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';
@@ -82,16 +83,27 @@ wss.on('connection', function connection(ws) {
 
   ws.on('close', function close() {
     console.log('Disconnected: ', ws.connectionId);
-    // connectedPlayers = connectedPlayers.filter(player => player.uid !== ws.uid)
-    // console.log('remaining playhers:', connectedPlayers)
-    // wss.clients.forEach(function each(client) {
-    //   if (client !== ws && client.readyState === WebSocket.OPEN) {
-    //     client.send(JSON.stringify({
-    //       type: "disconnect_player",
-    //       player_id: ws.uid
-    //     }));
-    //   }
-    // });
+    const player = state.onlinePlayers.find(player => player.id === ws.playerId)
+    
+    
+
+    console.log('remaining playhers:', state.onlinePlayers)
+
+    if (player) {
+      state.rooms[player.roomType][player.roomCode].players.forEach(pl => {
+        console.log('CL', player.ws.readyState)
+        if (pl.ws.readyState) {
+          pl.ws.send(JSON.stringify({
+            type: "disconnect_player",
+            playerId: player.ws.playerId
+          }));
+        }
+      });
+  
+      state.rooms[player.roomType][player.roomCode].players = state.rooms[player.roomType][player.roomCode].players.filter(player => player.id !== ws.playerId)
+      state.onlinePlayers = state.onlinePlayers.filter(player => player.id !== ws.playerId)
+    }
+    
   });
 })
 
