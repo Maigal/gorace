@@ -3,10 +3,10 @@ class Player{
   constructor(data){
     this.id = data.id;
     this.nickname = data.nickname;
-    this.x = data.x || 0;
-    this.y = data.y || 0;
-    this.currentRoomType = null;
-    this.currentRoom = null;
+    this.x = data.x || 100.0;
+    this.y = data.y || 200.0;
+    this.roomType = null;
+    this.roomCode = null;
     this.animation = data.animation || "idle";
     this.ws = data.ws;
     this.connectionId = data.ws.connectionId;

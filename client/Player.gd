@@ -19,6 +19,7 @@ var wallJumpKnockback = 0
 var wallJumpDirection = 1
 var canWallJump = true
 var player_direction = 1
+var current_animation = "idle"
 
 func _ready():
 	pass
@@ -48,6 +49,14 @@ func _physics_process(delta):
 	x_velocity = movementX_direction
 	
 	animate(movementX_direction, isGrounded)
+	
+	var update_data = {
+		x= position.x,
+		y= position.y,
+		animation= current_animation,
+		dir= player_direction
+	}
+	get_tree().call_group("global", "update_player", update_data)
 		
 func moveX(direction):
 	var knockbackMovespeed = 1
@@ -136,3 +145,4 @@ func play_animation(anim_name):
 	if anim_player.is_playing() and anim_player.current_animation == anim_name:
 		return
 	anim_player.play(anim_name)
+	current_animation = anim_name

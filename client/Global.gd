@@ -76,6 +76,11 @@ func _on_data():
 				get_tree().change_scene(parsedData["roomScene"])
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
+		"create_other_players":
+			get_tree().call_group("room", "create_other_players", parsedData["players"])
+		"create_new_player":
+			get_tree().call_group("room", "create_new_player", parsedData["player"])
+			
 
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals
@@ -120,4 +125,9 @@ func on_joined_room():
 		roomType = roomType,
 		roomCode = roomCode
 	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
+func update_player(playerData):
+	var message = playerData
+	message.type = "update_position"
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
