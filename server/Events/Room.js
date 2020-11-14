@@ -74,8 +74,6 @@ module.exports = {
         }
       })
 
-      console.log('data', data)
-
       if (player.ws.readyState && data.length > 0) {
         player.ws.send(JSON.stringify({type:"update_other_players_positions", players: data}))
       }
