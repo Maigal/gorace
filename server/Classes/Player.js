@@ -8,6 +8,7 @@ class Player{
     this.roomType = null;
     this.roomCode = null;
     this.animation = data.animation || "idle";
+    this.dir = data.dir || 1;
     this.ws = data.ws;
     this.connectionId = data.ws.connectionId;
   }
@@ -21,13 +22,21 @@ class Player{
       else return value;
   }
 
+  updatePositions(x,y,dir,animation) {
+    this.x = x
+    this.y = y
+    this.dir = dir
+    this.animation = animation
+  }
+
   parseForClient() {
     return {
       id: this.id,
       nickname: this.nickname,
       x: this.x,
       y: this.y,
-      animation: this.animation
+      animation: this.animation,
+      dir: this.dir
     }
   }
 

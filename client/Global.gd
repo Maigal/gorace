@@ -77,7 +77,10 @@ func _on_data():
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
 		"create_other_players":
+			print('AAAAAAAAAAAAAAAAAAAAAAAA')
 			get_tree().call_group("room", "create_other_players", parsedData["players"])
+			print('BBBBBBBBBBBBBBBBBBB')
+			print(parsedData["players"])
 		"create_new_player":
 			get_tree().call_group("room", "create_new_player", parsedData["player"])
 			

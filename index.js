@@ -60,7 +60,8 @@ wss.on('connection', function connection(ws) {
       case "joined_room":
         const joinedRoomData = RoomModule.joined(ws, msg.roomType, msg.roomCode)
         if (joinedRoomData.status === "success") {
-          ws.send(JSON.stringify({type: "create_other_players", players: joinedRoomData.otherPlayers.map(op => op.parseForClient())}))
+          setTimeout(() => ws.send(JSON.stringify({type: "create_other_players", players: joinedRoomData.otherPlayers.map(op => op.parseForClient())})), 100)
+          
           //console.log('iothers', joinedRoomData)
           joinedRoomData.otherPlayers.forEach(otherPlayer => {
             otherPlayer.ws.send(JSON.stringify({type: "create_new_player", player: joinedRoomData.player.parseForClient()}))

@@ -56,7 +56,9 @@ module.exports = {
    // console.log("ws, x, y, animation, dir ", x, y, animation, dir);
     const playerInfo = state.onlinePlayers.find(player => player.id === ws.playerId)
     const room = state.rooms[playerInfo.roomType][playerInfo.roomCode]
-    console.log('room', room)
+    const playerIndex = room.players.findIndex(player => player.id === ws.playerId)
+    const playerObject = room.players[playerIndex]
+    playerObject.updatePositions(x,y,animation,dir)
   },
 
   emitUpdate() {
