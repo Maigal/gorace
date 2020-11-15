@@ -95,4 +95,7 @@ tile_data = PoolIntArray( 196617, 1610612736, 0, 196618, 1610612736, 0, 196619, 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 333, 170 )
 
+[node name="BloodSprite" type="Sprite" parent="."]
+centered = false
+
 [node name="OtherPlayers" type="Node" parent="."]

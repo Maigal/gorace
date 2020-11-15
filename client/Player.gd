@@ -26,6 +26,8 @@ func _ready():
 	
 func _physics_process(delta):
 	
+	if Input.is_action_pressed("test"):
+		explode()
 	
 	if wallJumpKnockback > 0:
 		wallJumpKnockback -= 5
@@ -146,3 +148,6 @@ func play_animation(anim_name):
 		return
 	anim_player.play(anim_name)
 	current_animation = anim_name
+
+func explode():
+	$BloodController.splatter()
