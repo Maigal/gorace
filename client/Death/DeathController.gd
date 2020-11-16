@@ -1,14 +1,14 @@
 extends Node2D
 
-var BloodParticle = load("res://Blood/BloodParticle.tscn")
-export var BloodParticleNumber = 1
+var BloodParticle = load("res://Death/DeathParticle.tscn")
+export var BloodParticleNumber = 10
 export var RandomVelocity = 800.0
 
 
 
 var rnd = RandomNumberGenerator.new()
 
-func splatter(particles_to_spawn = -1):
+func explode(particles_to_spawn = -1):
 	print('SPLATTER')
 	if (particles_to_spawn <= 0):
 		particles_to_spawn = BloodParticleNumber
@@ -19,4 +19,4 @@ func splatter(particles_to_spawn = -1):
 			spawnedParticle = BloodParticle.instance()
 			get_tree().root.add_child(spawnedParticle)
 			spawnedParticle.global_position = global_position
-			spawnedParticle.linear_velocity = Vector2(rnd.randf_range(-RandomVelocity, RandomVelocity), rnd.randf_range(-20, 20))
+			spawnedParticle.linear_velocity = Vector2(rnd.randf_range(800, 600), rnd.randf_range(-100, 100))

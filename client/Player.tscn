@@ -4,7 +4,7 @@
 [ext_resource path="res://Sprites/Player/leg.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Player/eyes.png" type="Texture" id=3]
 [ext_resource path="res://Player.gd" type="Script" id=4]
-[ext_resource path="res://Blood/BloodController.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Death/DeathController.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.7051
@@ -564,4 +564,4 @@ anims/jump = SubResource( 4 )
 anims/run = SubResource( 5 )
 anims/wallslide = SubResource( 6 )
 
-[node name="BloodController" parent="." instance=ExtResource( 5 )]
+[node name="DeathController" parent="." instance=ExtResource( 5 )]

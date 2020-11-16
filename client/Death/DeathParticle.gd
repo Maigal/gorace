@@ -25,4 +25,5 @@ func _physics_process(delta):
 
 func _on_BloodParticle_body_entered(body):
 	get_tree().call_group("room", "draw_blood_splatter", position, linear_velocity, dir, Color(1.0,0,0,1.0))
+	yield(get_tree().create_timer(1.0), "timeout")
 	queue_free()

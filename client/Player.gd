@@ -150,4 +150,6 @@ func play_animation(anim_name):
 	current_animation = anim_name
 
 func explode():
-	$BloodController.splatter()
+	$DeathController.explode()
+	scale.x = 0
+	scale.y = 0
