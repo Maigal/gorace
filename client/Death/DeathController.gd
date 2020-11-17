@@ -2,7 +2,6 @@ extends Node2D
 
 var DeathParticle = load("res://Death/DeathParticle.tscn")
 export var DeathParticleNumber = 20
-export var RandomVelocity = 800.0
 
 
 
@@ -16,5 +15,5 @@ func explode(dir, dist, force):
 	for i in range(particles_to_spawn):
 		spawnedParticle = DeathParticle.instance()
 		get_tree().root.add_child(spawnedParticle)
-		spawnedParticle.global_position = Vector2(rng.randf_range(global_position.x - 20,global_position.x + 20), rng.randf_range(global_position.y - 20,global_position.y + 20))
-		spawnedParticle.linear_velocity = Vector2(rng.randf_range((dist.x * force) - 40, (dist.x * force) + 40), rng.randf_range((dist.y * force) - 40, (dist.y * force) + 40))
+		spawnedParticle.global_position = Vector2(rng.randf_range(global_position.x - 30,global_position.x + 30), rng.randf_range(global_position.y - 30,global_position.y + 30))
+		spawnedParticle.linear_velocity = Vector2(rng.randf_range((dist.x * force) - 50, (dist.x * force) + 50), rng.randf_range((dist.y * force) - 50, (dist.y * force) + 50))

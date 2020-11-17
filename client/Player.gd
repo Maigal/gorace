@@ -21,6 +21,8 @@ var canWallJump = true
 var player_direction = 1
 var current_animation = "idle"
 
+var isDead = false
+
 func _ready():
 	pass
 	
@@ -42,13 +44,16 @@ func _physics_process(delta):
 			
 	
 	var movementX_direction = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
-	moveX(movementX_direction)
-
-	moveY(isGrounded)
 	
-	x_velocity = movementX_direction
+	if !isDead:
+		
+		moveX(movementX_direction)
 	
-	animate(movementX_direction, isGrounded)
+		moveY(isGrounded)
+		
+		x_velocity = movementX_direction
+		
+		animate(movementX_direction, isGrounded)
 	
 	var update_data = {
 		x= position.x,
@@ -160,5 +165,20 @@ func explode(dirX, dirY, distX, distY, force):
 	print('dir', dirX, dirY)
 	print('distx ', distX, ' disty ', distY)
 	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force)
+	die()
+
+func die():
+	isDead = true
 	scale.x = 0
 	scale.y = 0
+	yield(get_tree().create_timer(4.5), "timeout")
+	revive()
+	
+func revive():
+	isDead = false
+	scale.x = 1
+	scale.y = 1
+	var checkpoint =  get_tree().get_root().find_node("Checkpoint", true, false)
+	position.x = checkpoint.position.x
+	position.y = checkpoint.position.y
+	
