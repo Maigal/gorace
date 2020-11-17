@@ -99,4 +99,9 @@ position = Vector2( 333, 170 )
 [node name="OtherPlayers" type="Node" parent="."]
 
 [node name="Trap" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1008, 590.513 )
+position = Vector2( 672.861, 530.037 )
+force = 20
+
+[node name="Trap2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1036.98, 693.827 )
+force = 20

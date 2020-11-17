@@ -19,3 +19,7 @@ collision_layer = 2147483652
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 visible = false
 shape = SubResource( 1 )
+
+[node name="TrapCenter" type="Position2D" parent="."]
+visible = false
+[connection signal="body_entered" from="Area2D" to="." method="_on_Player_entered"]

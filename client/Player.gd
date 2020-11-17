@@ -26,8 +26,6 @@ func _ready():
 	
 func _physics_process(delta):
 	
-	if Input.is_action_pressed("test"):
-		explode()
 	
 	if wallJumpKnockback > 0:
 		wallJumpKnockback -= 5
@@ -148,8 +146,19 @@ func play_animation(anim_name):
 		return
 	anim_player.play(anim_name)
 	current_animation = anim_name
+	
+func on_hit_trap(force, trap_position):
+	print('force', force)
+	print('pos', trap_position)
+	var xdir = -1 if trap_position.x > position.x else 1
+	var ydir = 1 if trap_position.y > position.y else -1
+	var xdist =  position.x - trap_position.x
+	var ydist =  position.y - trap_position.y
+	explode(xdir, ydir, xdist, ydist, force)
 
-func explode():
-	$DeathController.explode()
+func explode(dirX, dirY, distX, distY, force):
+	print('dir', dirX, dirY)
+	print('distx ', distX, ' disty ', distY)
+	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force)
 	scale.x = 0
 	scale.y = 0
