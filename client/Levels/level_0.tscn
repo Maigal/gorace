@@ -100,11 +100,11 @@ position = Vector2( 333, 170 )
 
 [node name="Trap" parent="." instance=ExtResource( 4 )]
 position = Vector2( 672.861, 530.037 )
-force = 20
+force = 40
 
 [node name="Trap2" parent="." instance=ExtResource( 4 )]
-position = Vector2( 1036.98, 693.827 )
-force = 20
+position = Vector2( 1039.98, 690.999 )
+force = 40
 
 [node name="Checkpoint" type="Position2D" parent="."]
 position = Vector2( 181.295, 695.215 )

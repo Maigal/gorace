@@ -179,6 +179,9 @@ func revive():
 	scale.x = 1
 	scale.y = 1
 	var checkpoint =  get_tree().get_root().find_node("Checkpoint", true, false)
+	var y_velocity = 0
+	var x_velocity = 0
+	var isWallSliding = false
 	position.x = checkpoint.position.x
 	position.y = checkpoint.position.y
 	
