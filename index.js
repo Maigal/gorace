@@ -72,6 +72,16 @@ wss.on('connection', function connection(ws) {
       
       case "update_position":
         const updatedPositionData = RoomModule.updatePosition(ws, msg.x, msg.y, msg.animation, msg.dir)
+        break;
+
+      case "player_death":
+        console.log('player died')
+        const playerDeathData = RoomModule.playerDeath(ws, msg.dirX, msg.dirY, msg.distX, msg.distY, msg.force)
+        if (playerDeathData.status === "success") {
+          playerDeathData.otherPlayers.forEach(otherPlayer => {
+            otherPlayer.ws.send(JSON.stringify({type: "player_death", player: playerDeathData.player.parseForClient(), deathData: playerDeathData.deathData}))
+          })
+        }
 
       default:
         break;

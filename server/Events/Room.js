@@ -37,7 +37,6 @@ module.exports = {
       // console.log("targetRoom.players", targetRoom.players, user);
       // console.log("targetRoom ", targetRoom);
       if (targetRoom && targetRoom.players.find(player => player.id == user.id)) {
-        console.log('state on', state.onlinePlayers)
         return {
           status: "success",
           otherPlayers: targetRoom.players.filter(player => player.id !== user.id),
@@ -59,6 +58,24 @@ module.exports = {
     const playerIndex = room.players.findIndex(player => player.id === ws.playerId)
     const playerObject = room.players[playerIndex]
     playerObject.updatePositions(x,y,animation,dir)
+  },
+
+  playerDeath(ws, dirX, dirY, distX, distY, force) {
+    const playerInfo = state.onlinePlayers.find(player => player.id === ws.playerId)
+    const targetRoom = state.rooms[playerInfo.roomType][playerInfo.roomCode]
+    if (targetRoom && targetRoom.players.find(player => player.id == ws.playerId)) {
+      return {
+        status: "success",
+        player: targetRoom.players.find(player => player.id == ws.playerId),
+        otherPlayers: targetRoom.players.filter(player => player.id !== ws.playerId),
+        deathData: {dirX, dirY, distX, distY, force}
+      }
+    } else {
+      return {
+        status: "error",
+        error_message: "Player not in room?"
+      }
+    }
   },
 
   emitUpdate() {

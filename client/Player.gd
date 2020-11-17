@@ -165,6 +165,7 @@ func explode(dirX, dirY, distX, distY, force):
 	print('dir', dirX, dirY)
 	print('distx ', distX, ' disty ', distY)
 	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force)
+	get_tree().call_group("global", "on_player_death", dirX, dirY, distX, distY, force)
 	die()
 
 func die():

@@ -84,6 +84,8 @@ func _on_data():
 			get_tree().call_group("room", "update_other_players_positions", parsedData["players"])
 		"disconnect_player":
 			get_tree().call_group("room", "disconnect_player", parsedData["playerId"])
+		"player_death":
+			get_tree().call_group("room", "player_death", parsedData["player"], parsedData["deathData"])
 			
 
 func _process(delta):
@@ -134,4 +136,15 @@ func on_joined_room():
 func update_player(playerData):
 	var message = playerData
 	message.type = "update_position"
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
+func on_player_death(dirX, dirY, distX, distY, force):
+	var message = {
+		type = "player_death",
+		dirX = dirX,
+		dirY = dirY,
+		distX = distX,
+		distY = distY,
+		force = force
+	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())

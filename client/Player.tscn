@@ -566,7 +566,7 @@ anims/wallslide = SubResource( 6 )
 
 [node name="DeathController" parent="." instance=ExtResource( 5 )]
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
 limit_left = 0
 limit_top = 0

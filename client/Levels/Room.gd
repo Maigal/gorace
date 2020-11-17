@@ -36,6 +36,11 @@ func update_other_players_positions(players_list):
 			oPlayerInstance.scale.x = oPlayerData.dir
 			oPlayerInstance.playAnimation(oPlayerData.animation)
 			
+func player_death(playerData, deathData):
+		var oPlayerInstance = get_node("OtherPlayers/OtherPlayer" + str(playerData.id))
+		if oPlayerInstance:
+			oPlayerInstance.explode(deathData.dirX, deathData.dirY, deathData.distX, deathData.distY, deathData.force)
+			
 func disconnect_player(player_id):
 	get_node("OtherPlayers/OtherPlayer" + str(player_id)).queue_free()
 	
