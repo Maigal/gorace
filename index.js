@@ -99,7 +99,7 @@ wss.on('connection', function connection(ws) {
 
     console.log('remaining playhers:', state.onlinePlayers)
 
-    if (player) {
+    if (player && player.roomType && player.roomCode) {
       state.rooms[player.roomType][player.roomCode].players.forEach(pl => {
         console.log('CL', player.ws.readyState)
         if (pl.ws.readyState) {
@@ -108,11 +108,14 @@ wss.on('connection', function connection(ws) {
             playerId: player.ws.playerId
           }));
         }
+        
       });
   
       state.rooms[player.roomType][player.roomCode].players = state.rooms[player.roomType][player.roomCode].players.filter(player => player.id !== ws.playerId)
-      state.onlinePlayers = state.onlinePlayers.filter(player => player.id !== ws.playerId)
+      
     }
+
+    state.onlinePlayers = state.onlinePlayers.filter(player => player.id !== ws.playerId)
     
   });
 })

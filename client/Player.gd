@@ -8,6 +8,8 @@ const WALL_SLIDE_ACCELERATION = 10
 const MAX_WALL_SLIDE_SPEED = 120
 const MAX_WALL_JUMP_KNOCKBACK = 225
 
+var isInLobby = false
+
 onready var anim_player = $AnimationPlayer
 onready var leftCollider = $Colliders/WallCollider_Left
 onready var rightCollider = $Colliders/WallCollider_Right
@@ -55,13 +57,17 @@ func _physics_process(delta):
 		
 		animate(movementX_direction, isGrounded)
 	
-	var update_data = {
-		x= position.x,
-		y= position.y,
-		animation= current_animation,
-		dir= player_direction
-	}
-	get_tree().call_group("global", "update_player", update_data)
+	
+	
+	if !isInLobby:
+		var update_data = {
+			x= position.x,
+			y= position.y,
+			animation= current_animation,
+			dir= player_direction
+		}
+		get_tree().call_group("global", "update_player", update_data)
+	
 		
 func moveX(direction):
 	var knockbackMovespeed = 1
@@ -119,6 +125,10 @@ func moveY(isGrounded):
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
+		print('wallCollider:', wallCollider)
+		print('canWallJump:', canWallJump)
+		print('wallJumpDirection:', wallJumpDirection)
+		print('-player_direction:', -player_direction)
 	elif wallCollider and Input.is_action_just_pressed("jump") and (canWallJump or wallJumpDirection != -player_direction):
 		var dir
 		if wallCollider == "right":
