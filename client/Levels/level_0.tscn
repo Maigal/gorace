@@ -82,6 +82,7 @@ points = PoolVector2Array( 7.62939e-06, 0, 48, 0, 7.62939e-06, 48 )
 [node name="level_0" type="Node2D" groups=[
 "room",
 ]]
+position = Vector2( 2, 0 )
 script = ExtResource( 3 )
 
 [node name="TileMap" type="TileMap" parent="." groups=[

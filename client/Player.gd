@@ -160,6 +160,7 @@ func on_hit_trap(force, trap_position):
 	var xdist =  position.x - trap_position.x
 	var ydist =  position.y - trap_position.y
 	explode(xdir, ydir, xdist, ydist, force)
+	$PlayerCamera/ScreenShake.start(0.5, 40,20, 0)
 
 func explode(dirX, dirY, distX, distY, force):
 	print('dir', dirX, dirY)
