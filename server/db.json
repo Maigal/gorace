@@ -4,31 +4,51 @@
       "id": 0,
       "username": "a",
       "password": "a",
-      "nickname": "a"
+      "nickname": "a",
+      "level": 1,
+      "exp": 0,
+      "color": 0,
+      "eyes": 0
     },
     {
       "id": 1,
       "username": "b",
       "password": "b",
-      "nickname": "b"
+      "nickname": "b",
+      "level": 1,
+      "exp": 0,
+      "color": 0,
+      "eyes": 0
     },
     {
       "id": 2,
       "username": "c",
       "password": "c",
-      "nickname": "c"
+      "nickname": "c",
+      "level": 1,
+      "exp": 0,
+      "color": 0,
+      "eyes": 0
     },
     {
       "id": 3,
       "username": "d",
       "password": "d",
-      "nickname": "d"
+      "nickname": "d",
+      "level": 1,
+      "exp": 0,
+      "color": 0,
+      "eyes": 0
     },
     {
       "id": 4,
       "username": "e",
       "password": "e",
-      "nickname": "e"
+      "nickname": "e",
+      "level": 1,
+      "exp": 0,
+      "color": 0,
+      "eyes": 0
     }
   ]
 }

@@ -75,7 +75,7 @@ wss.on('connection', function connection(ws) {
         break;
 
       case "player_death":
-        console.log('player died')
+        //console.log('player died')
         const playerDeathData = RoomModule.playerDeath(ws, msg.dirX, msg.dirY, msg.distX, msg.distY, msg.force)
         if (playerDeathData.status === "success") {
           playerDeathData.otherPlayers.forEach(otherPlayer => {
@@ -95,13 +95,9 @@ wss.on('connection', function connection(ws) {
     console.log('Disconnected: ', ws.connectionId);
     const player = state.onlinePlayers.find(player => player.id === ws.playerId)
     
-    
-
-    console.log('remaining playhers:', state.onlinePlayers)
 
     if (player && player.roomType && player.roomCode) {
       state.rooms[player.roomType][player.roomCode].players.forEach(pl => {
-        console.log('CL', player.ws.readyState)
         if (pl.ws.readyState) {
           pl.ws.send(JSON.stringify({
             type: "disconnect_player",
