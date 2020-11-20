@@ -3,10 +3,9 @@ extends Node2D
 var otherPlayer = preload("res://PlayerOther.tscn")
 
 func _ready():
-	get_tree().call_group("global", "joined_room")
+	get_tree().call_group("global", "on_joined_room")
 
 func create_other_players(players_list):
-	print('entrando')
 	for i in range(players_list.size()):
 		var oPlayerData = players_list[i]
 		var instancedScene = otherPlayer.instance()

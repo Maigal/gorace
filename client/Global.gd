@@ -8,6 +8,8 @@ var nickname
 var userId
 var roomType
 var roomCode
+var player_customization_color
+var player_customization_eyes
 
 func _ready():
 	print('global ready')
@@ -66,6 +68,8 @@ func _on_data():
 			if parsedData.status == "success":
 				nickname = parsedData.nickname
 				userId = parsedData.id
+				player_customization_color = parsedData.color
+				player_customization_eyes = parsedData.eyes
 				get_tree().change_scene("res://Lobby.tscn")
 			elif parsedData.status == "error":
 				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
@@ -87,7 +91,15 @@ func _on_data():
 		"player_death":
 			get_tree().call_group("room", "player_death", parsedData["player"], parsedData["deathData"])
 			
-
+func get_player_data():
+	var data = {
+		level = 0,
+		nickname = nickname,
+		player_customization_color = player_customization_color,
+		player_customization_eyes = player_customization_eyes
+	}
+	return data
+	
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals
 	# emission will only happen when calling this function.
@@ -126,12 +138,21 @@ func on_join_room(roomType, room):
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
 func on_joined_room():
+	print('joining room')
+	var data = {
+		nickname = nickname,
+		player_customization_color = player_customization_color,
+		player_customization_eyes = player_customization_eyes
+	}
+	get_tree().call_group("player", "get_player_customization_data", data)
+	
 	var message = {
 		type = "joined_room",
 		roomType = roomType,
 		roomCode = roomCode
 	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
 	
 func update_player(playerData):
 	var message = playerData

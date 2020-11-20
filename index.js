@@ -57,6 +57,7 @@ wss.on('connection', function connection(ws) {
       case "join_room":
         const joinRoomResult = RoomModule.join(ws, msg.roomType, msg.roomCode)
         ws.send(JSON.stringify({type: "join_room", ...joinRoomResult}))
+        break;
 
       case "joined_room":
         const joinedRoomData = RoomModule.joined(ws, msg.roomType, msg.roomCode)

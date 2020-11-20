@@ -29,6 +29,19 @@ class Player{
     this.dir = dir
   }
 
+  baseDataParsedForClient() {
+    return {
+      id: this.id,
+      nickname: this.nickname,
+      x: this.x,
+      y: this.y,
+      animation: this.animation,
+      dir: this.dir,
+      color: this.color,
+      eyes: this.eyes
+    }
+  }
+
   parseForClient() {
     return {
       id: this.id,

@@ -14,6 +14,25 @@ onready var anim_player = $AnimationPlayer
 onready var leftCollider = $Colliders/WallCollider_Left
 onready var rightCollider = $Colliders/WallCollider_Right
 
+var customizationData = {
+	colors = [
+		{
+			body = Color(1,1,1,1),
+			legs = Color(1,1,1,1)
+		},
+		{
+			body = Color(0.8,0.2,0.2,1),
+			legs = Color(0.8,0.2,0.2,1)
+		}
+	]
+}
+
+var customization = {
+	color = 0,
+	eyes = 0,
+	nickname = ""
+}
+
 var y_velocity = 0
 var x_velocity = 0
 var isWallSliding = false
@@ -24,6 +43,19 @@ var player_direction = 1
 var current_animation = "idle"
 
 var isDead = false
+
+func get_player_customization_data(data):
+	if data.nickname:
+		customization.nickname = data.nickname
+		
+	if data.player_customization_eyes:
+		customization.eyes = data.player_customization_eyes
+		
+	if data.player_customization_color:
+		customization.color = data.player_customization_color
+		$Rig/Body.self_modulate = customizationData.colors[customization["color"]].body
+		$Rig/Body/Leg_Left.self_modulate = customizationData.colors[customization["color"]].legs
+		$Rig/Body/Leg_Right.self_modulate = customizationData.colors[customization["color"]].legs
 
 func _ready():
 	pass
@@ -125,10 +157,6 @@ func moveY(isGrounded):
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
-		print('wallCollider:', wallCollider)
-		print('canWallJump:', canWallJump)
-		print('wallJumpDirection:', wallJumpDirection)
-		print('-player_direction:', -player_direction)
 	elif wallCollider and Input.is_action_just_pressed("jump") and (canWallJump or wallJumpDirection != -player_direction):
 		var dir
 		if wallCollider == "right":
