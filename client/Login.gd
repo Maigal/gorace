@@ -5,4 +5,4 @@ func _on_Button_pressed():
 
 func get_login_error_message(message):
 	print('msg: ', message)
-	$CanvasLayer/ColorRect/Container/ErrorMessage.text = message
+	$CanvasLayer/ColorRect/ErrorMessage.text = message
