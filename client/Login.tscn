@@ -15,7 +15,7 @@ size = 32
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 32
+size = 36
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -46,6 +46,7 @@ margin_left = -100.0
 margin_top = -100.0
 margin_right = 110.0
 margin_bottom = 177.0
+custom_constants/separation = 6
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -61,26 +62,27 @@ __meta__ = {
 }
 
 [node name="InputUsername" type="LineEdit" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 62.0
+margin_top = 64.0
 margin_right = 210.0
-margin_bottom = 112.0
+margin_bottom = 114.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 max_length = 12
+caret_blink = true
 
 [node name="LabelPassword" type="Label" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 116.0
+margin_top = 120.0
 margin_right = 210.0
-margin_bottom = 174.0
+margin_bottom = 178.0
 custom_fonts/font = SubResource( 1 )
 text = "PASSWORD"
 
 [node name="InputPassword" type="LineEdit" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 178.0
+margin_top = 184.0
 margin_right = 210.0
-margin_bottom = 228.0
+margin_bottom = 234.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/normal = SubResource( 2 )
 custom_fonts/font = SubResource( 3 )
@@ -89,10 +91,16 @@ max_length = 12
 secret = true
 secret_character = "#"
 
-[node name="Button" type="Button" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 232.0
+[node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/ColorRect/Container"]
+margin_top = 240.0
 margin_right = 210.0
-margin_bottom = 277.0
+margin_bottom = 245.0
+rect_min_size = Vector2( 0, 5 )
+
+[node name="Button" type="Button" parent="CanvasLayer/ColorRect/Container"]
+margin_top = 251.0
+margin_right = 210.0
+margin_bottom = 301.0
 custom_fonts/font = SubResource( 4 )
 text = "Login"
 __meta__ = {
@@ -100,15 +108,15 @@ __meta__ = {
 }
 
 [node name="ErrorMessage" type="Label" parent="CanvasLayer/ColorRect"]
-modulate = Color( 0.611765, 0.113725, 0.113725, 1 )
+modulate = Color( 0.462745, 0.137255, 0.137255, 1 )
 anchor_left = 0.503
-anchor_top = 0.731
-anchor_right = 0.503
-anchor_bottom = 0.731
-margin_left = -200.152
-margin_top = -17.9204
-margin_right = 199.848
-margin_bottom = 18.0796
+anchor_top = 0.758
+anchor_right = 0.504
+anchor_bottom = 0.758
+margin_left = -198.839
+margin_top = -19.5281
+margin_right = 199.361
+margin_bottom = 19.4719
 custom_fonts/font = SubResource( 5 )
 align = 1
 valign = 1

@@ -21,6 +21,7 @@ module.exports = {
             exp: dbUser.exp
           });
           state.onlinePlayers.push(player);
+          state.createRoom("versus")
           return {
             status: "success",
             nickname: dbUser.nickname,
