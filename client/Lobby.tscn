@@ -1,12 +1,18 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Lobby.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/tileset.tres" type="TileSet" id=3]
-[ext_resource path="res://assets/ARIAL.TTF" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/norwester.otf" type="DynamicFontData" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_size = 1
+outline_color = Color( 0.607843, 0.164706, 0.164706, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Lobby" type="Node2D" groups=[
@@ -27,13 +33,35 @@ tile_data = PoolIntArray( 851997, 0, 0, 852005, 0, 0, 917533, 0, 0, 917541, 0, 0
 position = Vector2( 1611.86, 763.274 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 945.113
-margin_top = 684.702
-margin_right = 957.113
-margin_bottom = 704.702
+margin_left = 612.864
+margin_top = 368.167
+margin_right = 1128.86
+margin_bottom = 432.167
 custom_fonts/font = SubResource( 1 )
-text = "ENTER ROOM"
+text = "ENTER OPEN WORLD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonMatchmaking" type="Button" parent="."]
+margin_left = 610.619
+margin_top = 525.312
+margin_right = 1126.62
+margin_bottom = 589.312
+custom_fonts/font = SubResource( 1 )
+text = "PLAY VERSUS"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="StatusText" type="Label" parent="."]
+margin_left = 720.409
+margin_top = 641.775
+margin_right = 1033.41
+margin_bottom = 749.775
+custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 [connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="ButtonMatchmaking" to="." method="_on_ButtonMatchmaking_pressed"]

@@ -137,6 +137,14 @@ func on_join_room(roomType, room):
 	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
+func on_join_queue(roomType):
+	var message = {
+		type = "join_queue",
+		queue_type = "versus"
+	}
+	
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
 func on_joined_room():
 	print('joining room')
 	var data = {
@@ -152,6 +160,7 @@ func on_joined_room():
 		roomCode = roomCode
 	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
 	
 	
 func update_player(playerData):
