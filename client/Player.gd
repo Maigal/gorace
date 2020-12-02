@@ -147,6 +147,8 @@ func moveY(isGrounded):
 	if y_velocity > MAX_FALL_SPEED:
 		y_velocity = MAX_FALL_SPEED
 	
+	if Input.is_action_just_released("jump") && y_velocity < 0:
+		y_velocity = y_velocity / 2;
 #	print(is_on_wall())	
 
 	var wallCollider = null
