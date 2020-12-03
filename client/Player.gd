@@ -69,8 +69,13 @@ func _physics_process(delta):
 		wallJumpKnockback += 5	
 		
 	var isGrounded = is_on_floor()
+	var wallCollider = null
+	if rightCollider.is_colliding() and rightCollider.get_collider().is_in_group("terrain"):
+		wallCollider = "right"
+	elif leftCollider.is_colliding() and leftCollider.get_collider().is_in_group("terrain"):
+		wallCollider = "left"
 	
-	if isGrounded:
+	if isGrounded && !wallCollider:
 		if wallJumpKnockback != 0:
 			wallJumpKnockback = 0
 		if canWallJump == false:
@@ -81,9 +86,10 @@ func _physics_process(delta):
 	
 	if !isDead:
 		
+		
 		moveX(movementX_direction)
 	
-		moveY(isGrounded)
+		moveY(isGrounded, wallCollider)
 		
 		x_velocity = movementX_direction
 		
@@ -124,7 +130,7 @@ func moveX(direction):
 			
 		$Rig.scale.x = player_direction
 	
-func moveY(isGrounded):
+func moveY(isGrounded, wallCollider):
 	
 
 	if isGrounded and y_velocity > 0:
@@ -132,7 +138,7 @@ func moveY(isGrounded):
 	elif is_on_ceiling():
 		y_velocity = 1		
 		
-	if is_on_wall() && (Input.is_action_pressed("move_right") || Input.is_action_pressed("move_left")):
+	if (wallCollider == "right" && Input.is_action_pressed("move_right")) || (wallCollider == "left" && Input.is_action_pressed("move_left")):
 		if y_velocity >= 0:
 			y_velocity = min(y_velocity + WALL_SLIDE_ACCELERATION, MAX_WALL_SLIDE_SPEED)
 			isWallSliding = true
@@ -151,15 +157,11 @@ func moveY(isGrounded):
 		y_velocity = y_velocity / 2;
 #	print(is_on_wall())	
 
-	var wallCollider = null
-	if rightCollider.is_colliding() and rightCollider.get_collider().is_in_group("terrain"):
-		wallCollider = "right"
-	elif leftCollider.is_colliding() and leftCollider.get_collider().is_in_group("terrain"):
-		wallCollider = "left"
+	
 		
 	if isGrounded  and Input.is_action_just_pressed("jump"):
 		y_velocity = -JUMP_FORCE
-	elif wallCollider and Input.is_action_just_pressed("jump") and (canWallJump or wallJumpDirection != -player_direction):
+	elif wallCollider and Input.is_action_just_pressed("jump"):
 		var dir
 		if wallCollider == "right":
 			dir = -1

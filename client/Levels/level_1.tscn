@@ -42,4 +42,4 @@ force = 40
 position = Vector2( 181.295, 695.215 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 132.069, 738.982 )
+position = Vector2( 1346.32, 772.618 )
