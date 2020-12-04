@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Sprites/Player/body.png" type="Texture" id=1]
 [ext_resource path="res://Sprites/Player/leg.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Player.gd" type="Script" id=4]
 [ext_resource path="res://Death/DeathController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/ScreenShake.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Customization.gd" type="Script" id=7]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 11.7051
@@ -533,7 +534,10 @@ enabled = true
 cast_to = Vector2( -15, 0 )
 collision_mask = 2147483650
 
-[node name="Rig" type="Node2D" parent="."]
+[node name="Rig" type="Node2D" parent="." groups=[
+"rig",
+]]
+script = ExtResource( 7 )
 
 [node name="Body" type="Sprite" parent="Rig"]
 position = Vector2( 0, 1 )

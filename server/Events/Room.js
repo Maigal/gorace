@@ -1,4 +1,5 @@
-const db = require('../db.js')
+const db = require('../db.js');
+const { onlinePlayers } = require('../state.js');
 let state = require('../state.js')
 
 module.exports = {
@@ -35,7 +36,6 @@ module.exports = {
     if (roomType === "openWorld") {
       let targetRoom = state.rooms.openWorld[roomCode]
       // console.log("targetRoom.players", targetRoom.players, user);
-      // console.log("targetRoom ", targetRoom);
       if (targetRoom && targetRoom.players.find(player => player.id == user.id)) {
         return {
           status: "success",

@@ -8,6 +8,8 @@ class Player{
     this.roomType = null;
     this.roomCode = null;
     this.animation = data.animation || "idle";
+    this.eyes = data.eyes;
+    this.color = data.color;
     this.dir = data.dir || 1;
     this.ws = data.ws;
     this.connectionId = data.ws.connectionId;

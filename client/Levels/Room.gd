@@ -15,8 +15,10 @@ func create_other_players(players_list):
 		instancedScene.position.x = oPlayerData.x
 		instancedScene.position.y = oPlayerData.y
 		$OtherPlayers.add_child(instancedScene)
+		instancedScene.get_other_player_customization_data(oPlayerData)
 		
 func create_new_player(player):
+	print('player: ', player)
 	var instancedScene = otherPlayer.instance()
 	instancedScene.name = "OtherPlayer" + str(player.id)
 	instancedScene.instanceId = player.id
@@ -24,6 +26,7 @@ func create_new_player(player):
 	instancedScene.position.x = player.x
 	instancedScene.position.y = player.y
 	$OtherPlayers.add_child(instancedScene)
+	instancedScene.get_other_player_customization_data(player)
 
 func update_other_players_positions(players_list):
 	for i in range(players_list.size()):

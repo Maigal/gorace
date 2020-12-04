@@ -48,14 +48,13 @@ func get_player_customization_data(data):
 	if data.nickname:
 		customization.nickname = data.nickname
 		
+
 	if data.player_customization_eyes:
-		customization.eyes = data.player_customization_eyes
+		$Rig.change_eyes(data.player_customization_eyes)
+		#customization.eyes = data.player_customization_eyes
 		
 	if data.player_customization_color:
-		customization.color = data.player_customization_color
-		$Rig/Body.self_modulate = customizationData.colors[customization["color"]].body
-		$Rig/Body/Leg_Left.self_modulate = customizationData.colors[customization["color"]].legs
-		$Rig/Body/Leg_Right.self_modulate = customizationData.colors[customization["color"]].legs
+		$Rig.change_color(data.player_customization_color)
 
 func _ready():
 	pass
