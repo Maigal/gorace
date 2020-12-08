@@ -25,11 +25,11 @@ tile_data = PoolIntArray( 196617, 1610612736, 0, 196618, 1610612736, 0, 196619, 
 
 [node name="Trap" parent="." instance=ExtResource( 4 )]
 position = Vector2( 672.861, 530.037 )
-force = 40
+force = 20
 
 [node name="Trap2" parent="." instance=ExtResource( 4 )]
 position = Vector2( 1039.98, 690.999 )
-force = 40
+force = 30
 
 [node name="Checkpoint" type="Position2D" parent="."]
 position = Vector2( 181.295, 695.215 )
