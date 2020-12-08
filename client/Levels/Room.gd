@@ -6,6 +6,7 @@ func _ready():
 	get_tree().call_group("global", "on_joined_room")
 
 func create_other_players(players_list):
+	print('oplayers: ', players_list)
 	for i in range(players_list.size()):
 		var oPlayerData = players_list[i]
 		var instancedScene = otherPlayer.instance()
@@ -14,8 +15,11 @@ func create_other_players(players_list):
 		instancedScene.nickname = oPlayerData.nickname
 		instancedScene.position.x = oPlayerData.x
 		instancedScene.position.y = oPlayerData.y
-		$OtherPlayers.add_child(instancedScene)
-		instancedScene.get_other_player_customization_data(oPlayerData)
+		if $OtherPlayers.get_node_or_null("OtherPlayer" + str(oPlayerData.id)):
+			pass
+		else:
+			$OtherPlayers.add_child(instancedScene)
+			instancedScene.get_other_player_customization_data(oPlayerData)
 		
 func create_new_player(player):
 	print('player: ', player)
@@ -25,8 +29,11 @@ func create_new_player(player):
 	instancedScene.nickname = player.nickname
 	instancedScene.position.x = player.x
 	instancedScene.position.y = player.y
-	$OtherPlayers.add_child(instancedScene)
-	instancedScene.get_other_player_customization_data(player)
+	if $OtherPlayers.get_node_or_null("OtherPlayer" + str(player.id)):
+			pass
+	else:
+		$OtherPlayers.add_child(instancedScene)
+		instancedScene.get_other_player_customization_data(player)
 
 func update_other_players_positions(players_list):
 	for i in range(players_list.size()):

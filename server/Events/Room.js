@@ -6,7 +6,6 @@ let Matchmaking = require('./Matchmaking.js')
 module.exports = {
 
   join(ws, roomType, roomCode) {
- console.log("roomType, roomCode ", roomType, roomCode);
     let player = state.onlinePlayers.find(u => u.id === ws.playerId)
     let playerIndex = state.onlinePlayers.findIndex(u => u.id === ws.playerId)
     
@@ -40,7 +39,6 @@ module.exports = {
   },
 
   joined(ws, roomType, roomCode) {
-    console.log('JOINEDDDDDDDDDDDDDDDDDDDD: ', roomType, roomCode)
     //console.log("ws, roomType, roomCode ", ws, roomType, roomCode);
     let user = state.onlinePlayers.find(u => u.id === ws.playerId)
     let targetRoom = state.rooms[roomType][roomCode]
