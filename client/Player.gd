@@ -48,7 +48,6 @@ func get_player_customization_data(data):
 	if data.nickname:
 		customization.nickname = data.nickname
 		
-
 	if data.player_customization_eyes:
 		$Rig.change_eyes(data.player_customization_eyes)
 		#customization.eyes = data.player_customization_eyes
@@ -206,7 +205,7 @@ func on_hit_trap(force, trap_position):
 func explode(dirX, dirY, distX, distY, force):
 	print('dir', dirX, dirY)
 	print('distx ', distX, ' disty ', distY)
-	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force)
+	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force, $Rig.get_body_colors())
 	get_tree().call_group("global", "on_player_death", dirX, dirY, distX, distY, force)
 	die()
 

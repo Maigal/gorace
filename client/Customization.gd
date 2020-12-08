@@ -28,3 +28,6 @@ func change_color(colorIndex):
 	$Body.self_modulate = customizationData.colors[customization["color"]].body
 	$Body/Leg_Left.self_modulate = customizationData.colors[customization["color"]].legs
 	$Body/Leg_Right.self_modulate = customizationData.colors[customization["color"]].legs
+	
+func get_body_colors():
+	return customizationData.colors[customization["color"]].body
