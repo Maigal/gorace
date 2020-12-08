@@ -80,6 +80,8 @@ func _on_data():
 				get_tree().change_scene(parsedData["roomScene"])
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
+		"found_room":
+			on_join_room(parsedData.roomType, parsedData.roomCode)
 		"create_other_players":
 			get_tree().call_group("room", "create_other_players", parsedData["players"])
 		"create_new_player":
@@ -130,11 +132,13 @@ func on_pressed_login(username, password):
 
 	
 func on_join_room(roomType, room):
+	print('jr')
 	var message = {
 		type = "join_room",
 		roomType = roomType,
 		roomCode = room
 	}
+	print('msg, ', message)
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
 func on_join_queue(roomType):

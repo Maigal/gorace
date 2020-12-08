@@ -19,4 +19,5 @@ func _on_Button_pressed():
 
 
 func _on_ButtonMatchmaking_pressed():
-	get_tree().call_group("global", "on_join_queue", "versus")
+	print('toque el boton papa')
+	get_tree().call_group("global", "on_join_room", "versus", false)

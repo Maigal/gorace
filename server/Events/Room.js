@@ -1,14 +1,16 @@
 const db = require('../db.js');
 const { onlinePlayers } = require('../state.js');
 let state = require('../state.js')
+let Matchmaking = require('./Matchmaking.js')
 
 module.exports = {
 
   join(ws, roomType, roomCode) {
+ console.log("roomType, roomCode ", roomType, roomCode);
     let player = state.onlinePlayers.find(u => u.id === ws.playerId)
     let playerIndex = state.onlinePlayers.findIndex(u => u.id === ws.playerId)
     
-    if (roomType === "openWorld") {
+    if (roomCode) {
       let targetRoom = state.rooms[roomType][roomCode]
       if (targetRoom) {
         state.onlinePlayers[playerIndex].roomType = roomType
@@ -19,7 +21,7 @@ module.exports = {
           status: "success",
           roomType,
           roomCode,
-          roomScene: state.rooms.openWorld[roomCode].scene
+          roomScene: state.rooms[roomType][roomCode].scene
         }
       } else {
         return {
@@ -27,26 +29,32 @@ module.exports = {
           error_message: "Room does not exist"
         }
       }
+    } else {
+      Matchmaking.join(ws, roomType, player, this.join)
+      return {
+        status: "error",
+        error_message: "Looking for room"
+      }
     }
+
   },
 
   joined(ws, roomType, roomCode) {
+    console.log('JOINEDDDDDDDDDDDDDDDDDDDD: ', roomType, roomCode)
     //console.log("ws, roomType, roomCode ", ws, roomType, roomCode);
     let user = state.onlinePlayers.find(u => u.id === ws.playerId)
-    if (roomType === "openWorld") {
-      let targetRoom = state.rooms.openWorld[roomCode]
-      // console.log("targetRoom.players", targetRoom.players, user);
-      if (targetRoom && targetRoom.players.find(player => player.id == user.id)) {
-        return {
-          status: "success",
-          otherPlayers: targetRoom.players.filter(player => player.id !== user.id),
-          player: targetRoom.players.find(player => player.id == ws.playerId)
-        }
-      } else {
-        return {
-          status: "error",
-          error_message: "Player not in room?"
-        }
+    let targetRoom = state.rooms[roomType][roomCode]
+    // console.log("targetRoom.players", targetRoom.players, user);
+    if (targetRoom && targetRoom.players.find(player => player.id == user.id)) {
+      return {
+        status: "success",
+        otherPlayers: targetRoom.players.filter(player => player.id !== user.id),
+        player: targetRoom.players.find(player => player.id == ws.playerId)
+      }
+    } else {
+      return {
+        status: "error",
+        error_message: "Player not in room?"
       }
     }
   },
@@ -79,21 +87,32 @@ module.exports = {
   },
 
   emitUpdate() {
-    let players = state.rooms.openWorld["AAAA"].players
-    players.forEach(player => {
-      let data = players.filter(p => p.id !== player.id).map(player => {
-        return {
-          id: player.id,
-          x: player.x || 0,
-          y: player.y || 0,
-          animation: player.animation || "idle",
-          dir: player.dir || 1
+    let activeRooms = []
+    Object.keys(state.rooms.openWorld).forEach(room => {
+      activeRooms.push(state.rooms.openWorld[room])
+    })
+    Object.keys(state.rooms.versus).forEach(room => {
+      activeRooms.push(state.rooms.versus[room])
+    })
+
+    activeRooms.forEach(room => {
+      let players = room.players
+      players.forEach(player => {
+        let data = players.filter(p => p.id !== player.id).map(player => {
+          return {
+            id: player.id,
+            x: player.x || 0,
+            y: player.y || 0,
+            animation: player.animation || "idle",
+            dir: player.dir || 1
+          }
+        })
+
+        if (player.ws.readyState && data.length > 0) {
+          player.ws.send(JSON.stringify({type:"update_other_players_positions", players: data}))
         }
       })
-
-      if (player.ws.readyState && data.length > 0) {
-        player.ws.send(JSON.stringify({type:"update_other_players_positions", players: data}))
-      }
     })
+    
   }
 };
