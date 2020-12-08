@@ -20,7 +20,7 @@ func playAnimation(anim):
 	anim_player.play(anim)
 	
 func explode(dirX, dirY, distX, distY, force):
-	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force)
+	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force, $Rig.get_body_colors())
 	die()
 	
 func die():

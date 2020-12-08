@@ -518,12 +518,12 @@ script = ExtResource( 6 )
 texture = ExtResource( 3 )
 
 [node name="Leg_Left" type="Sprite" parent="Rig/Body"]
-position = Vector2( -7.5, 11.805 )
+position = Vector2( -6.96967, 11.805 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 5 )
 
 [node name="Leg_Right" type="Sprite" parent="Rig/Body"]
-position = Vector2( 7.5, 11.805 )
+position = Vector2( 7.94194, 11.805 )
 texture = ExtResource( 2 )
 offset = Vector2( 0, 5 )
 

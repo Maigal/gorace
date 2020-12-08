@@ -9,29 +9,12 @@ const MAX_WALL_SLIDE_SPEED = 120
 const MAX_WALL_JUMP_KNOCKBACK = 225
 
 var isInLobby = false
+var nickname = ""
 
 onready var anim_player = $AnimationPlayer
 onready var leftCollider = $Colliders/WallCollider_Left
 onready var rightCollider = $Colliders/WallCollider_Right
 
-var customizationData = {
-	colors = [
-		{
-			body = Color(1,1,1,1),
-			legs = Color(1,1,1,1)
-		},
-		{
-			body = Color(0.8,0.2,0.2,1),
-			legs = Color(0.8,0.2,0.2,1)
-		}
-	]
-}
-
-var customization = {
-	color = 0,
-	eyes = 0,
-	nickname = ""
-}
 
 var y_velocity = 0
 var x_velocity = 0
@@ -46,7 +29,7 @@ var isDead = false
 
 func get_player_customization_data(data):
 	if data.nickname:
-		customization.nickname = data.nickname
+		nickname = data.nickname
 		
 	if data.player_customization_eyes:
 		$Rig.change_eyes(data.player_customization_eyes)
