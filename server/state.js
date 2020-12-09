@@ -1,3 +1,5 @@
+const RoomVersus =  require('./Classes/RoomVersus')
+
 module.exports = {
   onlinePlayers: [],
   rooms: {
@@ -15,10 +17,14 @@ module.exports = {
   createRoom: function(type) {
     if (type === "versus") {
       //console.log('this: ', this)
-      this.rooms.versus["AAAA"] = {
+      // this.rooms.versus["AAAA"] = {
+      //   ...roomData.versus[0],
+      //   players: []
+      // }
+      this.rooms.versus["AAAA"] = new RoomVersus({
         ...roomData.versus[0],
-        players: []
-      }
+        roomType: "versus"
+      })
     }
     return "AAAA"
   }
