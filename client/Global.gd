@@ -80,6 +80,13 @@ func _on_data():
 				get_tree().change_scene(parsedData["roomScene"])
 			elif parsedData.status == "error":
 				print(parsedData["error_message"])
+		"join_queue":
+			if parsedData.status == "success":
+				get_tree().call_group("lobby", "joined_queue")
+#				get_tree().change_scene(parsedData["roomScene"])
+		"left_queue":
+			if parsedData.status == "success":
+				get_tree().call_group("lobby", "left_queue")
 		"found_room":
 			on_join_room(parsedData.roomType, parsedData.roomCode)
 		"create_other_players":
@@ -132,25 +139,29 @@ func on_pressed_login(username, password):
 
 	
 func on_join_room(roomType, room):
-	print('jr')
 	var message = {
 		type = "join_room",
 		roomType = roomType,
 		roomCode = room
 	}
-	print('msg, ', message)
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
 	
 func on_join_queue(roomType):
 	var message = {
 		type = "join_queue",
-		queue_type = "versus"
+		roomType = roomType
 	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
+func on_leave_queue(roomType):
+	var message = {
+		type = "leave_queue",
+		roomType = roomType
+	}
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
 func on_joined_room():
-	print('joining room')
 	var data = {
 		nickname = nickname,
 		player_customization_color = player_customization_color,

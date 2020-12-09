@@ -59,6 +59,16 @@ wss.on('connection', function connection(ws) {
         ws.send(JSON.stringify({type: "join_room", ...joinRoomResult}))
         break;
 
+      case "join_queue":
+        const joinQueueResult = RoomModule.join(ws, msg.roomType, msg.roomCode)
+        ws.send(JSON.stringify({type: "join_queue", ...joinQueueResult}))
+        break;
+
+      case "leave_queue":
+        const leaveQueueResult = RoomModule.leave(ws, msg.roomType, msg.roomCode)
+        ws.send(JSON.stringify({type: "left_queue", ...leaveQueueResult}))
+        break;
+
       case "joined_room":
         const joinedRoomData = RoomModule.joined(ws, msg.roomType, msg.roomCode)
         //console.log('joinr', joinedRoomData)

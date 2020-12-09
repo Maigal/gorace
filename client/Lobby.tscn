@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Lobby.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -13,6 +13,12 @@ font_data = ExtResource( 4 )
 size = 48
 outline_size = 1
 outline_color = Color( 0.607843, 0.164706, 0.164706, 1 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 42
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [node name="Lobby" type="Node2D" groups=[
@@ -32,7 +38,7 @@ tile_data = PoolIntArray( 851997, 0, 0, 852005, 0, 0, 917533, 0, 0, 917541, 0, 0
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1611.86, 763.274 )
 
-[node name="Button" type="Button" parent="."]
+[node name="ButtonOpenWorld" type="Button" parent="."]
 margin_left = 612.864
 margin_top = 368.167
 margin_right = 1128.86
@@ -63,5 +69,29 @@ custom_fonts/font = SubResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="Button" to="." method="_on_Button_pressed"]
+
+[node name="MatchmakingText" type="Label" parent="."]
+margin_left = 696.327
+margin_top = 646.163
+margin_right = 1057.33
+margin_bottom = 701.163
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 1, 0.968627, 0.968627, 1 )
+text = "Looking for game..."
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ButtonCancelQueue" type="Button" parent="."]
+margin_left = 775.839
+margin_top = 728.811
+margin_right = 969.839
+margin_bottom = 792.811
+custom_fonts/font = SubResource( 1 )
+text = "CANCEL"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="pressed" from="ButtonOpenWorld" to="." method="_on_ButtonOpenWorld_pressed"]
 [connection signal="pressed" from="ButtonMatchmaking" to="." method="_on_ButtonMatchmaking_pressed"]
+[connection signal="pressed" from="ButtonCancelQueue" to="." method="_on_ButtonCancelQueue_pressed"]

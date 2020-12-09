@@ -29,10 +29,41 @@ module.exports = {
         }
       }
     } else {
-      Matchmaking.join(ws, roomType, player, this.join)
+      Matchmaking.join(ws, roomType, player)
       return {
-        status: "error",
-        error_message: "Looking for room"
+        status: "success"
+      }
+    }
+
+  },
+
+  leave(ws, roomType, roomCode) {
+    let player = state.onlinePlayers.find(u => u.id === ws.playerId)
+    let playerIndex = state.onlinePlayers.findIndex(u => u.id === ws.playerId)
+
+    if (roomCode) {
+      let targetRoom = state.rooms[roomType][roomCode]
+      // if (targetRoom) {
+      //   state.onlinePlayers[playerIndex].roomType = roomType
+      //   state.onlinePlayers[playerIndex].roomCode = roomCode
+        
+      //   targetRoom.players.push(player)
+      //   return {
+      //     status: "success",
+      //     roomType,
+      //     roomCode,
+      //     roomScene: state.rooms[roomType][roomCode].scene
+      //   }
+      // } else {
+      //   return {
+      //     status: "error",
+      //     error_message: "Room does not exist"
+      //   }
+      // }
+    } else {
+      Matchmaking.leave(ws, roomType, player)
+      return {
+        status: "success"
       }
     }
 
