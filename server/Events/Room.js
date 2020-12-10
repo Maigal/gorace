@@ -15,7 +15,12 @@ module.exports = {
         state.onlinePlayers[playerIndex].roomType = roomType
         state.onlinePlayers[playerIndex].roomCode = roomCode
         
-        targetRoom.players.push(player)
+        if (roomType === "versus") {
+          targetRoom.addPlayer(player)
+        } else {
+          targetRoom.players.push(player)
+        }
+        
         return {
           status: "success",
           roomType,
@@ -43,23 +48,22 @@ module.exports = {
 
     if (roomCode) {
       let targetRoom = state.rooms[roomType][roomCode]
-      // if (targetRoom) {
-      //   state.onlinePlayers[playerIndex].roomType = roomType
-      //   state.onlinePlayers[playerIndex].roomCode = roomCode
+      if (targetRoom) {
+        state.onlinePlayers[playerIndex].roomType = roomType
+        state.onlinePlayers[playerIndex].roomCode = roomCode
         
-      //   targetRoom.players.push(player)
-      //   return {
-      //     status: "success",
-      //     roomType,
-      //     roomCode,
-      //     roomScene: state.rooms[roomType][roomCode].scene
-      //   }
-      // } else {
-      //   return {
-      //     status: "error",
-      //     error_message: "Room does not exist"
-      //   }
-      // }
+        targetRoom.removePlayer(player.id)
+        return {
+          status: "success",
+          roomType,
+          roomCode
+        }
+      } else {
+        return {
+          status: "error",
+          error_message: "Room does not exist"
+        }
+      }
     } else {
       Matchmaking.leave(ws, roomType, player)
       return {
@@ -94,7 +98,10 @@ module.exports = {
     const room = state.rooms[playerInfo.roomType][playerInfo.roomCode]
     const playerIndex = room.players.findIndex(player => player.id === ws.playerId)
     const playerObject = room.players[playerIndex]
-    playerObject.updatePositions(x,y,animation,dir)
+    if (playerObject) {
+      playerObject.updatePositions(x,y,animation,dir)
+    }
+    
   },
 
   playerDeath(ws, dirX, dirY, distX, distY, force) {

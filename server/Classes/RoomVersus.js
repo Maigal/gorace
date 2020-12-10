@@ -4,7 +4,29 @@ class RoomVersus extends Room {
 
   constructor(data) {
     super(data)
-    console.log('roomversus, ', this)
+    this.maxPlayers = 2
+  }
+
+  addPlayer(player) {
+    super.addPlayer(player)
+    if (this.players.length === this.maxPlayers) {
+      this.startRoom()
+    }
+  }
+
+  removePlayer(playerId) {
+    super.removePlayer(playerId)
+    if (this.players.length < this.maxPlayers) {
+      closeRoom()
+    }
+  }
+
+  startRoom() {
+    // START ROOm
+  }
+
+  closeRoom() {
+    
   }
 
 }

@@ -53,3 +53,9 @@ func player_death(playerData, deathData):
 func disconnect_player(player_id):
 	get_node("OtherPlayers/OtherPlayer" + str(player_id)).queue_free()
 	
+func quit_room():
+	get_tree().call_group("global", "leave_room")
+	
+func left_room():
+	get_tree().change_scene("res://Lobby.tscn")
+	

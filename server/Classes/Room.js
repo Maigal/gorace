@@ -5,6 +5,7 @@ class Room {
     this.type = data.roomType
     this.name = data.name
     this.scene = data.scene
+    this.maxPlayers = 99
   }
 
   addPlayer(player) {

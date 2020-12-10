@@ -15,19 +15,34 @@ module.exports = {
     versus: []
   },
   createRoom: function(type) {
-    if (type === "versus") {
-      //console.log('this: ', this)
-      // this.rooms.versus["AAAA"] = {
-      //   ...roomData.versus[0],
-      //   players: []
-      // }
-      this.rooms.versus["AAAA"] = new RoomVersus({
-        ...roomData.versus[0],
-        roomType: "versus"
-      })
+    switch (type){
+      case "versus":
+        let targetCode = idGenerator(this.rooms.versus)
+        this.rooms.versus[targetCode] = new RoomVersus({
+          ...roomData.versus[0],
+          roomType: "versus"
+        })
+        return targetCode
+
+      default:
+        break;
     }
-    return "AAAA"
   }
+}
+
+function idGenerator(obj) {
+  let result           = '';
+  let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+  let charactersLength = characters.length;
+  for ( let i = 0; i < 4; i++ ) {
+     result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  if (!obj[result]) {
+    return result;
+  } else {
+    return idGenerator(obj)
+  }
+  
 }
 
 const roomData = {

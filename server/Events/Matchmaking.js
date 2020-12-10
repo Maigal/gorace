@@ -8,7 +8,6 @@ module.exports = {
       state.matchmaking[roomType].push(player)
       if (state.matchmaking[roomType].length > 1) {
         let roomCode = state.createRoom("versus")
-        console.log('asd: ', state.rooms.versus)
         state.matchmaking[roomType].forEach(pl => {
           pl.ws.send(JSON.stringify({type: "found_room", roomType, roomCode}))
         })
