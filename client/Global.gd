@@ -10,6 +10,7 @@ var roomType
 var roomCode
 var player_customization = {
 	body_color = 0,
+	body_equip = 0,
 	eyes = 0,
 	eyes_color = 0
 }
@@ -73,6 +74,7 @@ func _on_data():
 			if parsedData.status == "success":
 				nickname = parsedData.nickname
 				userId = parsedData.id
+				player_customization.body_equip = parsedData.customization.body_equip
 				player_customization.body_color = parsedData.customization.body_color
 				player_customization.eyes = parsedData.customization.eyes
 				player_customization.eyes_color = parsedData.customization.eyes_color
@@ -113,6 +115,7 @@ func get_player_data():
 		level = 0,
 		nickname = nickname,
 		body_color = player_customization.body_color,
+		body_equip = player_customization.body_equip,
 		eyes = player_customization.eyes,
 		eyes_color = player_customization.eyes_color
 	}
@@ -174,6 +177,7 @@ func on_joined_room():
 	var data = {
 		nickname = nickname,
 		body_color = player_customization.body_color,
+		body_equip = player_customization.body_equip,
 		eyes = player_customization.eyes,
 		eyes_color = player_customization.eyes_color
 	}

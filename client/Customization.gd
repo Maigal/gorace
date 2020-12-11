@@ -1,6 +1,16 @@
 extends Node2D
 
 var customizationData = {
+	body_equips = [
+		{
+			resource = null,
+			animated = false
+		},
+		{
+			resource = load("res://Sprites/Player/Customization/Body/1.png"),
+			animated = false
+		}
+	],
 	eyes = [
 		{
 			resource = load("res://Sprites/Player/Customization/Eyes/0.png"),
@@ -28,6 +38,7 @@ var customizationData = {
 }
 
 var customization = {
+	body_equip = 0,
 	body_color = 0,
 	eyes = 0,
 	eyes_color = 0,
@@ -38,6 +49,10 @@ var customization = {
 func change_eyes(eyeIndex):
 	customization.eyes = eyeIndex
 	$Body/Eyes.texture = customizationData.eyes[customization["eyes"]].resource
+	
+func change_body_equip(eyeIndex):
+	customization.body_equip = eyeIndex
+	$Body/Body_Equip.texture = customizationData.body_equips[customization["body_equip"]].resource
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex

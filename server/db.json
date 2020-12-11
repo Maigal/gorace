@@ -9,6 +9,7 @@
       "exp": 0,
       "customization" : {
         "body_color": 0,
+        "body_equip": 0,
         "eyes": 0,
         "eyes_color": 0
       }
@@ -23,6 +24,7 @@
       "exp": 0,
       "customization" : {
         "body_color": 1,
+        "body_equip": 0,
         "eyes": 1,
         "eyes_color": 1
       }
@@ -37,6 +39,7 @@
       "exp": 0,
       "customization" : {
         "body_color": 0,
+        "body_equip": 1,
         "eyes": 0,
         "eyes_color": 1
       }
@@ -51,6 +54,7 @@
       "exp": 0,
       "customization" : {
         "body_color": 0,
+        "body_equip": 0,
         "eyes": 0,
         "eyes_color": 0
       }
@@ -65,6 +69,7 @@
       "exp": 0,
       "customization" : {
         "body_color": 0,
+        "body_equip": 0,
         "eyes": 0,
         "eyes_color": 0
       }
