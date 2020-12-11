@@ -8,9 +8,8 @@ class Player{
     this.roomType = null;
     this.roomCode = null;
     this.animation = data.animation || "idle";
-    this.eyes = data.eyes;
-    this.body_color = data.body_color;
     this.dir = data.dir || 1;
+    this.customization = data.customization;
     this.ws = data.ws;
     this.connectionId = data.ws.connectionId;
   }
@@ -39,8 +38,7 @@ class Player{
       y: this.y,
       animation: this.animation,
       dir: this.dir,
-      body_color: this.body_color,
-      eyes: this.eyes
+      customization: this.customization
     }
   }
 

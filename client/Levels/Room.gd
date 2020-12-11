@@ -19,7 +19,7 @@ func create_other_players(players_list):
 			pass
 		else:
 			$OtherPlayers.add_child(instancedScene)
-			instancedScene.get_other_player_customization_data(oPlayerData)
+			instancedScene.get_other_player_customization_data(oPlayerData.customization)
 		
 func create_new_player(player):
 	print('player: ', player)
@@ -33,7 +33,7 @@ func create_new_player(player):
 			pass
 	else:
 		$OtherPlayers.add_child(instancedScene)
-		instancedScene.get_other_player_customization_data(player)
+		instancedScene.get_other_player_customization_data(player.customization)
 
 func update_other_players_positions(players_list):
 	for i in range(players_list.size()):

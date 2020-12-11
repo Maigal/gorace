@@ -31,12 +31,12 @@ func get_player_customization_data(data):
 	if data.nickname:
 		nickname = data.nickname
 		
-	if data.player_customization_eyes:
-		$Rig.change_eyes(data.player_customization_eyes)
+	if data.eyes:
+		$Rig.change_eyes(data.eyes)
 		#customization.eyes = data.player_customization_eyes
 		
-	if data.player_customization_body_color:
-		$Rig.change_body_color(data.player_customization_body_color)
+	if data.body_color:
+		$Rig.change_body_color(data.body_color)
 
 func _ready():
 	pass
