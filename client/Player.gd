@@ -31,7 +31,6 @@ func get_player_customization_data(data):
 	if data.nickname:
 		nickname = data.nickname
 		
-	print('data', data)
 	$Rig.change_body_equip(data.body_equip)
 	$Rig.change_eyes(data.eyes)
 	$Rig.change_body_color(data.body_color)

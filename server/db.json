@@ -40,8 +40,8 @@
       "customization" : {
         "body_color": 0,
         "body_equip": 1,
-        "eyes": 0,
-        "eyes_color": 1
+        "eyes": 2,
+        "eyes_color": 0
       }
       
     },

@@ -19,6 +19,10 @@ var customizationData = {
 		{
 			resource = load("res://Sprites/Player/Customization/Eyes/1.png"),
 			animated = false
+		},
+		{
+			resource = load("res://Sprites/Player/Customization/Eyes/2.tres"),
+			animated = true
 		}
 	],
 	body_colors = [
@@ -48,7 +52,15 @@ var customization = {
 
 func change_eyes(eyeIndex):
 	customization.eyes = eyeIndex
-	$Body/Eyes.texture = customizationData.eyes[customization["eyes"]].resource
+	if customizationData.eyes[eyeIndex].animated:
+		$Body/Eyes_Animated.frames = customizationData.eyes[customization["eyes"]].resource
+		$Body/Eyes.hide()
+		$Body/Eyes_Animated.show()
+	else:
+		$Body/Eyes.texture = customizationData.eyes[customization["eyes"]].resource
+		$Body/Eyes.show()
+		$Body/Eyes_Animated.hide()
+		
 	
 func change_body_equip(eyeIndex):
 	customization.body_equip = eyeIndex
@@ -62,7 +74,12 @@ func change_body_color(colorIndex):
 	
 func change_eyes_color(colorIndex):
 	customization.eyes_color = colorIndex
-	$Body/Eyes.self_modulate = customizationData.eyes_colors[customization["eyes_color"]]
+	
+	if customizationData.eyes[customization.eyes].animated:
+		$Body/Eyes_Animated.self_modulate = customizationData.eyes_colors[customization["eyes_color"]]
+	else:
+		$Body/Eyes.self_modulate = customizationData.eyes_colors[customization["eyes_color"]]
+	
 	print('modu', $Body/Eyes.self_modulate)
 	
 func get_body_colors():
