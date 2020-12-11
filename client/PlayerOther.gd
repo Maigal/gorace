@@ -7,12 +7,9 @@ var isDead = false
 onready var anim_player = $AnimationPlayer
 
 func get_other_player_customization_data(data):
-	if data.eyes:
-		$Rig.change_eyes(data.eyes)
-		#customization.eyes = data.player_customization_eyes
-		
-	if data.body_color:
-		$Rig.change_body_color(data.body_color)
+	$Rig.change_eyes(data.eyes)
+	$Rig.change_body_color(data.body_color)
+	$Rig.change_eyes_color(data.eyes_color)
 		
 
 func playAnimation(anim):
