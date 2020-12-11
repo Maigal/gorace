@@ -7,7 +7,7 @@
       "nickname": "a",
       "level": 1,
       "exp": 0,
-      "color": 0,
+      "body_color": 0,
       "eyes": 0
     },
     {
@@ -17,7 +17,7 @@
       "nickname": "b",
       "level": 1,
       "exp": 0,
-      "color": 1,
+      "body_color": 1,
       "eyes": 0
     },
     {
@@ -27,7 +27,7 @@
       "nickname": "c",
       "level": 1,
       "exp": 0,
-      "color": 0,
+      "body_color": 0,
       "eyes": 0
     },
     {
@@ -37,7 +37,7 @@
       "nickname": "d",
       "level": 1,
       "exp": 0,
-      "color": 0,
+      "body_color": 0,
       "eyes": 0
     },
     {
@@ -47,7 +47,7 @@
       "nickname": "e",
       "level": 1,
       "exp": 0,
-      "color": 0,
+      "body_color": 0,
       "eyes": 0
     }
   ]

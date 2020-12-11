@@ -8,7 +8,7 @@ var nickname
 var userId
 var roomType
 var roomCode
-var player_customization_color
+var player_customization_body_color
 var player_customization_eyes
 
 func _ready():
@@ -68,7 +68,7 @@ func _on_data():
 			if parsedData.status == "success":
 				nickname = parsedData.nickname
 				userId = parsedData.id
-				player_customization_color = parsedData.color
+				player_customization_body_color = parsedData.body_color
 				player_customization_eyes = parsedData.eyes
 				get_tree().change_scene("res://Lobby.tscn")
 			elif parsedData.status == "error":
@@ -106,7 +106,7 @@ func get_player_data():
 	var data = {
 		level = 0,
 		nickname = nickname,
-		player_customization_color = player_customization_color,
+		player_customization_body_color = player_customization_body_color,
 		player_customization_eyes = player_customization_eyes
 	}
 	return data
@@ -166,7 +166,7 @@ func on_leave_queue(roomType):
 func on_joined_room():
 	var data = {
 		nickname = nickname,
-		player_customization_color = player_customization_color,
+		player_customization_body_color = player_customization_body_color,
 		player_customization_eyes = player_customization_eyes
 	}
 	get_tree().call_group("player", "get_player_customization_data", data)

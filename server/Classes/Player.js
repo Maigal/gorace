@@ -9,7 +9,7 @@ class Player{
     this.roomCode = null;
     this.animation = data.animation || "idle";
     this.eyes = data.eyes;
-    this.color = data.color;
+    this.body_color = data.body_color;
     this.dir = data.dir || 1;
     this.ws = data.ws;
     this.connectionId = data.ws.connectionId;
@@ -39,7 +39,7 @@ class Player{
       y: this.y,
       animation: this.animation,
       dir: this.dir,
-      color: this.color,
+      body_color: this.body_color,
       eyes: this.eyes
     }
   }

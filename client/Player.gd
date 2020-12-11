@@ -35,8 +35,8 @@ func get_player_customization_data(data):
 		$Rig.change_eyes(data.player_customization_eyes)
 		#customization.eyes = data.player_customization_eyes
 		
-	if data.player_customization_color:
-		$Rig.change_color(data.player_customization_color)
+	if data.player_customization_body_color:
+		$Rig.change_body_color(data.player_customization_body_color)
 
 func _ready():
 	pass

@@ -4,18 +4,18 @@
 [ext_resource path="res://Login.gd" type="Script" id=2]
 [ext_resource path="res://assets/norwester.otf" type="DynamicFontData" id=3]
 
-[sub_resource type="StyleBoxFlat" id=2]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.952941, 0.952941, 0.952941, 1 )
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=2]
 size = 32
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=3]
 size = 36
 font_data = ExtResource( 3 )
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 3 )
 
@@ -63,8 +63,8 @@ margin_top = 64.0
 margin_right = 210.0
 margin_bottom = 114.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 max_length = 12
 caret_blink = true
@@ -81,8 +81,8 @@ margin_top = 184.0
 margin_right = 210.0
 margin_bottom = 234.0
 rect_min_size = Vector2( 0, 50 )
-custom_styles/normal = SubResource( 2 )
-custom_fonts/font = SubResource( 3 )
+custom_styles/normal = SubResource( 1 )
+custom_fonts/font = SubResource( 2 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 max_length = 12
 secret = true
@@ -98,7 +98,7 @@ rect_min_size = Vector2( 0, 5 )
 margin_top = 251.0
 margin_right = 210.0
 margin_bottom = 301.0
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 3 )
 text = "Login"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -114,7 +114,7 @@ margin_left = -198.839
 margin_top = -19.5281
 margin_right = 199.361
 margin_bottom = 19.4719
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
 autowrap = true

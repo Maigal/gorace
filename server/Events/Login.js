@@ -15,7 +15,7 @@ module.exports = {
             nickname: dbUser.nickname,
             currentRoomType: null,
             currentRoom: null,
-            color: dbUser.color,
+            body_color: dbUser.body_color,
             eyes: dbUser.eyes,
             level: dbUser.level,
             exp: dbUser.exp
@@ -28,7 +28,7 @@ module.exports = {
             id: dbUser.id,
             level: dbUser.level,
             exp: dbUser.level,
-            color: dbUser.color,
+            body_color: dbUser.body_color,
             eyes: dbUser.eyes
           }
         } else {

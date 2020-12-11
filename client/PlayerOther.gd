@@ -11,8 +11,9 @@ func get_other_player_customization_data(data):
 		$Rig.change_eyes(data.eyes)
 		#customization.eyes = data.player_customization_eyes
 		
-	if data.color:
-		$Rig.change_color(data.color)
+	if data.body_color:
+		$Rig.change_body_color(data.body_color)
+		
 
 func playAnimation(anim):
 	if anim_player.is_playing() and anim_player.current_animation == anim:
