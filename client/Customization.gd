@@ -1,19 +1,29 @@
 extends Node2D
 
 var customizationData = {
+	eyes = [
+		{
+			resource = load("res://Sprites/Player/Customization/Eyes/0.png"),
+			animated = false
+		},
+		{
+			resource = load("res://Sprites/Player/Customization/Eyes/1.png"),
+			animated = false
+		}
+	],
 	body_colors = [
 		{
 			body = Color(1,1,1,1),
 			legs = Color(1,1,1,1)
 		},
 		{
-			body = Color(0.8,0.2,0.2,1),
-			legs = Color(0.8,0.2,0.2,1)
+			body = Color(0,0,0,1),
+			legs = Color(0,0,0,1)
 		}
 	],
 	eyes_colors = [
 		Color(0,0,0,1),
-		Color(0.2,0.2,0.8,1)		
+		Color(01,0,0,1)		
 	]
 }
 
@@ -27,6 +37,7 @@ var customization = {
 
 func change_eyes(eyeIndex):
 	customization.eyes = eyeIndex
+	$Body/Eyes.texture = customizationData.eyes[customization["eyes"]].resource
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex
