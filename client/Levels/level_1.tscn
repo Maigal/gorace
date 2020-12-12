@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/tileset.tres" type="TileSet" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Traps/StaticSaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/RoomUI.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/RoomGoal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Misc/RoomStartBlock.tscn" type="PackedScene" id=7]
 
 [node name="level_1" type="Node2D" groups=[
 "room",
@@ -65,4 +66,20 @@ visible = false
 position = Vector2( 21.6418, 20.812 )
 scale = Vector2( 2.08929, 1 )
 
+[node name="RoomStartBlock" parent="." instance=ExtResource( 7 )]
+position = Vector2( 294.085, 664.497 )
+
+[node name="RigidBody2D" parent="RoomStartBlock" index="0"]
+mode = 1
+
+[node name="Line2D" parent="RoomStartBlock/RigidBody2D" index="0"]
+position = Vector2( 66.1249, -39.1995 )
+points = PoolVector2Array( 0, 0, 0, 95 )
+width = 48.0
+
+[node name="CollisionShape2D" parent="RoomStartBlock/RigidBody2D" index="1"]
+position = Vector2( 66.19, 8.90905 )
+
 [editable path="RoomGoal"]
+
+[editable path="RoomStartBlock"]
