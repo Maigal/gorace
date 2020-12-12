@@ -1,10 +1,119 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Levels/Room.gd" type="Script" id=3]
 [ext_resource path="res://Traps/StaticSaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/RoomUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/norwester.otf" type="DynamicFontData" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 72
+outline_size = 5
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 6 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "ResultLose"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.631373, 0.0470588, 0.0470588, 0.623529 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ResultLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ "YOU LOSE" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ResultLabel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ResultLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "ResultWin"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.423529, 0.909804, 0.466667, 0.623529 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ResultLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ "YOU WIN", "YOU WIN" ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ResultLabel:rect_scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.5, 1.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("ResultLabel:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 1 ) ]
+}
 
 [node name="level_1" type="Node2D" groups=[
 "room",
@@ -45,10 +154,40 @@ position = Vector2( 181.295, 695.215 )
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 147.203, 733.937 )
 
-[node name="RoomUI" parent="." instance=ExtResource( 5 )]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ResultWrapper" type="ColorRect" parent="CanvasLayer"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResultLabel" type="Label" parent="CanvasLayer/ResultWrapper"]
+self_modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.525
+anchor_top = 0.58
+anchor_right = 0.525
+anchor_bottom = 0.58
+margin_left = -179.0
+margin_top = -66.0001
+margin_right = 59.9999
+margin_bottom = 20.9999
+rect_pivot_offset = Vector2( 115.858, 44.69 )
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "YOU WIN"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ResultAnimation" type="AnimationPlayer" parent="CanvasLayer/ResultWrapper"]
+anims/ResultLose = SubResource( 3 )
+anims/ResultWin = SubResource( 2 )
+
+[node name="RoomUI" parent="CanvasLayer" instance=ExtResource( 5 )]
 anchor_left = 1.0
 anchor_bottom = 0.0
-margin_left = 1790.49
-margin_top = 8.4757
-margin_right = 1790.49
-margin_bottom = 8.4757

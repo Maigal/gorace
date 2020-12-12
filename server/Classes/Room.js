@@ -14,6 +14,13 @@ class Room {
 
   removePlayer(playerId) {
     this.players = this.players.filter(player => player.id !== playerId)
+    this.players.forEach(pl => {
+      pl.ws.send(JSON.stringify({
+        type: "disconnect_player",
+        playerId: playerId
+      }));
+    })
+    
   }
 }
 
