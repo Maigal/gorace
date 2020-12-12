@@ -174,8 +174,6 @@ func play_animation(anim_name):
 	current_animation = anim_name
 	
 func on_hit_trap(force, trap_position):
-	print('force', force)
-	print('pos', trap_position)
 	var xdir = -1 if trap_position.x > position.x else 1
 	var ydir = 1 if trap_position.y > position.y else -1
 	var xdist =  position.x - trap_position.x
@@ -184,8 +182,6 @@ func on_hit_trap(force, trap_position):
 	$PlayerCamera/ScreenShake.start(0.5, 40,20, 0)
 
 func explode(dirX, dirY, distX, distY, force):
-	print('dir', dirX, dirY)
-	print('distx ', distX, ' disty ', distY)
 	$DeathController.explode(Vector2(dirX, dirY), Vector2(distX, distY), force, $Rig.get_body_colors())
 	get_tree().call_group("global", "on_player_death", dirX, dirY, distX, distY, force)
 	die()

@@ -8,6 +8,7 @@ func room_result(result):
 	if result == "victory":
 		$ResultWrapper/ResultAnimation.play("ResultWin")
 	else:
+		get_tree().call_group("player", "on_hit_trap", 20, Vector2(0,0))
 		$ResultWrapper/ResultAnimation.play("ResultLose")
 
 func exit_room():

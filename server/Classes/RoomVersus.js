@@ -29,7 +29,7 @@ class RoomVersus extends Room {
     console.log('remaining players: ', this.players.map(p => p.id))
     if (this.players.length === 0) {
       this.closeRoom()
-    } else if (this.players.length < this.maxPlayers) {
+    } else if (this.status !== STATUS.FINISHED && this.players.length < this.maxPlayers) {
       this.endRoom()
     }
   }
