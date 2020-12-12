@@ -125,7 +125,7 @@ wss.on('connection', function connection(ws) {
         
       });
   
-      state.rooms[player.roomType][player.roomCode].players = state.rooms[player.roomType][player.roomCode].players.filter(player => player.id !== ws.playerId)
+      state.rooms[player.roomType][player.roomCode].removePlayer(player.id)
       
     } else if (state.matchmaking.versus.find(player => player.id === ws.playerId)){
       state.matchmaking.versus = state.matchmaking.versus.filter(player => player.id !== ws.playerId)

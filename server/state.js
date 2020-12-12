@@ -1,13 +1,29 @@
 const RoomVersus =  require('./Classes/RoomVersus');
+const RoomOpenWorld =  require('./Classes/RoomOpenWorld');
+
+const roomData = {
+  openWorld: [
+    {
+      name: "Test open world",
+      scene: "res://Levels/level_0.tscn"
+    }
+  ],
+  versus: [
+    {
+      name: "Test run",
+      scene: "res://Levels/level_1.tscn"
+    }
+  ]
+}
 
 module.exports = {
   onlinePlayers: [],
   rooms: {
     openWorld: {
-      'AAAA': {
-        scene: "res://Levels/level_0.tscn",
-        players: []
-      }
+      'AAAA': new RoomOpenWorld({
+        ...roomData.openWorld[0],
+        roomType: "openWorld"
+      })
     },
     versus: {}
   },
@@ -48,13 +64,4 @@ function idGenerator(obj) {
     return idGenerator(obj)
   }
   
-}
-
-const roomData = {
-  versus: [
-    {
-      name: "Test run",
-      scene: "res://Levels/level_1.tscn"
-    }
-  ]
 }
