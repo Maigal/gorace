@@ -205,6 +205,14 @@ func update_player(playerData):
 	message.type = "update_position"
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
+func entered_room_goal():
+	var message = {
+		type = "entered_room_goal",
+		roomType = roomType,
+		roomCode = roomCode
+	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
 func on_player_death(dirX, dirY, distX, distY, force):
 	var message = {
 		type = "player_death",

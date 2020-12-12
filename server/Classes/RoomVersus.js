@@ -1,5 +1,11 @@
 const Room = require("./Room");
 
+const STATUS = {
+  WAITING: 'waiting',
+  STARTED: 'started',
+  FINISHED: 'finished'
+}
+
 class RoomVersus extends Room {
 
   constructor(data) {
@@ -8,6 +14,7 @@ class RoomVersus extends Room {
     this.maxPlayers = 2
     this.playerList = []
     this.winner = null
+    this.status = STATUS.WAITING
   }
 
   addPlayer(player) {
@@ -29,6 +36,21 @@ class RoomVersus extends Room {
 
   startRoom() {
     this.playerList = [...this.players]
+    this.status = STATUS.STARTED
+  }
+
+  playerReachedGoal(playerId) {
+    if (this.status === STATUS.STARTED) {
+      this.status = STATUS.FINISHED
+      this.winner = this.players.find(pl => pl.id === playerId)
+      this.players.forEach(pl => {
+        pl.ws.send(JSON.stringify({
+          type: "room_result",
+          result: pl.id === this.winner.id ? "victory" : "defeat"
+        }))
+      })
+      
+    } 
   }
 
   endRoom() {

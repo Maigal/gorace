@@ -87,6 +87,10 @@ wss.on('connection', function connection(ws) {
         const leaveRoomData = RoomModule.leave(ws, msg.roomType, msg.roomCode)
         ws.send(JSON.stringify({type: "left_room", ...leaveRoomData}))
         break;
+
+      case "entered_room_goal":
+        const finishRoomData = RoomModule.enterGoal(ws, msg.roomType, msg.roomCode)
+        break;
       
       case "update_position":
         const updatedPositionData = RoomModule.updatePosition(ws, msg.x, msg.y, msg.animation, msg.dir)

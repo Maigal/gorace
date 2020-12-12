@@ -95,6 +95,14 @@ module.exports = {
     }
   },
 
+  enterGoal(ws, roomType, roomCode) {
+    let targetRoom = state.rooms[roomType][roomCode]
+
+    if (targetRoom) {
+      state.rooms[roomType][roomCode].playerReachedGoal(ws.playerId)
+    }
+  },
+
   updatePosition(ws, x, y, animation, dir) {
    // console.log("ws, x, y, animation, dir ", x, y, animation, dir);
     const playerInfo = state.onlinePlayers.find(player => player.id === ws.playerId)
