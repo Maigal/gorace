@@ -17,7 +17,7 @@ class RoomVersus extends Room {
   removePlayer(playerId) {
     super.removePlayer(playerId)
     if (this.players.length < this.maxPlayers) {
-      closeRoom()
+      this.closeRoom()
     }
   }
 
