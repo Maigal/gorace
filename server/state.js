@@ -1,4 +1,4 @@
-const RoomVersus =  require('./Classes/RoomVersus')
+const RoomVersus =  require('./Classes/RoomVersus');
 
 module.exports = {
   onlinePlayers: [],
@@ -20,13 +20,18 @@ module.exports = {
         let targetCode = idGenerator(this.rooms.versus)
         this.rooms.versus[targetCode] = new RoomVersus({
           ...roomData.versus[0],
-          roomType: "versus"
+          roomType: "versus",
+          onClose: this.closeRoom.bind(this, "versus", targetCode)
         })
         return targetCode
 
       default:
         break;
     }
+  },
+  closeRoom: function(roomType, roomCode) {
+    delete this.rooms[roomType][roomCode];
+    console.log('remaaining rooms: ', this.rooms.versus) 
   }
 }
 

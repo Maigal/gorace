@@ -99,6 +99,8 @@ func _on_data():
 			on_join_room(parsedData.roomType, parsedData.roomCode)
 		"left_room":
 			get_tree().call_group("room", "left_room")
+		"room_result":
+			get_tree().call_group("room", "room_result", parsedData.result)
 		"create_other_players":
 			get_tree().call_group("room", "create_other_players", parsedData["players"])
 		"create_new_player":
@@ -191,7 +193,6 @@ func on_joined_room():
 	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
 func leave_room():
-	print('wtf')
 	var message = {
 		type = "leave_room",
 		roomType = roomType,

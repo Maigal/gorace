@@ -4,7 +4,10 @@ class RoomVersus extends Room {
 
   constructor(data) {
     super(data)
+    this.onClose = data.onClose
     this.maxPlayers = 2
+    this.playerList = []
+    this.winner = null
   }
 
   addPlayer(player) {
@@ -16,17 +19,31 @@ class RoomVersus extends Room {
 
   removePlayer(playerId) {
     super.removePlayer(playerId)
-    if (this.players.length < this.maxPlayers) {
+    console.log('remaining players: ', this.players.map(p => p.id))
+    if (this.players.length === 0) {
       this.closeRoom()
+    } else if (this.players.length < this.maxPlayers) {
+      this.endRoom()
     }
   }
 
   startRoom() {
-    // START ROOm
+    this.playerList = [...this.players]
+  }
+
+  endRoom() {
+    if (this.players.length === 1) {
+      this.winner = this.players[0]
+      this.players[0].ws.send(JSON.stringify({
+        type: "room_result",
+        result: "victory"
+      }))
+      
+    }
   }
 
   closeRoom() {
-    
+    this.onClose()
   }
 
 }

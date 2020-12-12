@@ -43,16 +43,19 @@ module.exports = {
   },
 
   leave(ws, roomType, roomCode) {
+    console.log('leavinggg')
     let player = state.onlinePlayers.find(u => u.id === ws.playerId)
     let playerIndex = state.onlinePlayers.findIndex(u => u.id === ws.playerId)
 
     if (roomCode) {
       let targetRoom = state.rooms[roomType][roomCode]
       if (targetRoom) {
-        state.onlinePlayers[playerIndex].roomType = roomType
-        state.onlinePlayers[playerIndex].roomCode = roomCode
+        
         
         targetRoom.removePlayer(player.id)
+
+        state.onlinePlayers[playerIndex].roomType = null
+        state.onlinePlayers[playerIndex].roomCode = null
         return {
           status: "success",
           roomType,
@@ -95,12 +98,17 @@ module.exports = {
   updatePosition(ws, x, y, animation, dir) {
    // console.log("ws, x, y, animation, dir ", x, y, animation, dir);
     const playerInfo = state.onlinePlayers.find(player => player.id === ws.playerId)
-    const room = state.rooms[playerInfo.roomType][playerInfo.roomCode]
-    const playerIndex = room.players.findIndex(player => player.id === ws.playerId)
-    const playerObject = room.players[playerIndex]
-    if (playerObject) {
-      playerObject.updatePositions(x,y,animation,dir)
+    const isInRoom = playerInfo.roomType && playerInfo.roomCode && state.rooms[playerInfo.roomType][playerInfo.roomCode]
+
+    if (isInRoom) {
+      const room = state.rooms[playerInfo.roomType][playerInfo.roomCode]
+      const playerIndex = room.players.findIndex(player => player.id === ws.playerId)
+      const playerObject = room.players[playerIndex]
+      if (playerObject) {
+        playerObject.updatePositions(x,y,animation,dir)
+      }
     }
+    
     
   },
 
