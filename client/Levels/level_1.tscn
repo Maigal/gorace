@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Levels/tileset.tres" type="TileSet" id=2]
 [ext_resource path="res://Levels/Room.gd" type="Script" id=3]
 [ext_resource path="res://Traps/StaticSaw.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Levels/RoomUI.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Misc/RoomGoal.tscn" type="PackedScene" id=6]
 
 [node name="level_1" type="Node2D" groups=[
 "room",
@@ -46,3 +47,22 @@ position = Vector2( 181.295, 695.215 )
 position = Vector2( 147.203, 733.937 )
 
 [node name="RoomUI" parent="." instance=ExtResource( 5 )]
+
+[node name="RoomGoal" parent="." instance=ExtResource( 6 )]
+position = Vector2( 906.347, 188.077 )
+scale = Vector2( 2.24, 4.8 )
+z_index = 5
+
+[node name="GoalArea" parent="RoomGoal" index="0"]
+margin_left = 2.64413
+margin_top = 0.543518
+margin_right = 42.6441
+margin_bottom = 40.5435
+rect_scale = Vector2( 1, 0.991667 )
+
+[node name="CollisionShape2D" parent="RoomGoal" index="1"]
+visible = false
+position = Vector2( 21.6418, 20.812 )
+scale = Vector2( 2.08929, 1 )
+
+[editable path="RoomGoal"]
