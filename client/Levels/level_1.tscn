@@ -66,7 +66,9 @@ visible = false
 position = Vector2( 21.6418, 20.812 )
 scale = Vector2( 2.08929, 1 )
 
-[node name="RoomStartBlock" parent="." instance=ExtResource( 7 )]
+[node name="RoomStartBlock" parent="." groups=[
+"roomStartBlock",
+] instance=ExtResource( 7 )]
 position = Vector2( 294.085, 664.497 )
 
 [node name="RigidBody2D" parent="RoomStartBlock" index="0"]

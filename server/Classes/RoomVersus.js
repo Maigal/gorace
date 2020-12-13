@@ -20,7 +20,7 @@ class RoomVersus extends Room {
   addPlayer(player) {
     super.addPlayer(player)
     if (this.players.length === this.maxPlayers) {
-      this.startRoom()
+      this.initRoom()
     }
   }
 
@@ -34,9 +34,19 @@ class RoomVersus extends Room {
     }
   }
 
-  startRoom() {
+  initRoom() {
     this.playerList = [...this.players]
+    setTimeout(this.startRoom.bind(this), 5000)
+  }
+
+  startRoom() {
+    console.log('starting')
     this.status = STATUS.STARTED
+    this.players.forEach(pl => {
+      pl.ws.send(JSON.stringify({
+        type: "room_start"
+      }))
+    })
   }
 
   playerReachedGoal(playerId) {

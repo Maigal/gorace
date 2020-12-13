@@ -99,6 +99,8 @@ func _on_data():
 			on_join_room(parsedData.roomType, parsedData.roomCode)
 		"left_room":
 			get_tree().call_group("room", "left_room")
+		"room_start":
+			get_tree().call_group("room", "start_room")
 		"room_result":
 			get_tree().call_group("room", "room_result", parsedData.result)
 		"create_other_players":
