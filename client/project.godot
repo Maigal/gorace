@@ -27,6 +27,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Global="*res://Global.tscn"
+customizationData="*res://CustomizationData.gd"
 
 [display]
 
