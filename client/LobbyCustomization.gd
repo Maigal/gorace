@@ -12,9 +12,11 @@ var selectedCategory = "body_colors"
 onready var list_item = preload("res://Misc/ListItem.tscn")
 
 func _ready():
-	populate_category()
+	_on_Change_Category_pressed('body_colors')
 	
 func populate_category():
+	for oldItem in $Background/ScrollContainer/GridContainer.get_children():
+		oldItem.queue_free()
 	for item in available_items[selectedCategory]:
 		var itemData = customizationData[selectedCategory][item]
 		print('itemdata: ', itemData)
@@ -36,4 +38,4 @@ func _on_Change_Category_pressed(arg):
 		if category.name == 'Pill_' + arg:
 			category.self_modulate = Color(1,0,0,1)
 	print('selectedCategory: ', selectedCategory)
-#	populate_category()
+	populate_category()

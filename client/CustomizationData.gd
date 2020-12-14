@@ -3,13 +3,17 @@ extends Node
 var body_equips = [
 	{
 		id = 0,
+		description = "None",
 		resource = null,
-		animated = false
+		animated = false,
+		img = ""
 	},
 	{
 		id = 1,
+		description = "BOKITA EL MAS GRANDE",
 		resource = load("res://Sprites/Player/Customization/Body/1.png"),
-		animated = false
+		animated = false,
+		img = "res://Sprites/Player/Customization/Body/1_list.png"
 	}
 ]
 
