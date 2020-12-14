@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Lobby.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
@@ -21,6 +21,51 @@ outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
+[sub_resource type="DynamicFont" id=4]
+size = 48
+outline_size = 3
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=8]
+bg_color = Color( 0.309804, 0.32549, 0.411765, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.309804, 0.32549, 0.411765, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="DynamicFont" id=7]
+size = 20
+use_filter = true
+font_data = ExtResource( 4 )
+
 [node name="Lobby" type="Node2D" groups=[
 "lobby",
 ]]
@@ -33,7 +78,7 @@ tile_set = ExtResource( 3 )
 cell_size = Vector2( 48, 48 )
 collision_layer = 2
 format = 1
-tile_data = PoolIntArray( 851997, 0, 0, 852005, 0, 0, 917533, 0, 0, 917541, 0, 0, 983069, 0, 0, 983077, 0, 0, 1048605, 0, 0, 1048613, 0, 0, 1114141, 0, 0, 1114149, 0, 0, 1179677, 0, 0, 1179678, 0, 0, 1179679, 0, 0, 1179680, 0, 0, 1179681, 0, 0, 1179682, 0, 0, 1179683, 0, 0, 1179684, 0, 0, 1179685, 0, 0 )
+tile_data = PoolIntArray( 786462, 0, 0, 786463, 0, 0, 786464, 0, 0, 786465, 0, 0, 786466, 0, 0, 786467, 0, 0, 786468, 0, 0, 851998, 0, 0, 852004, 0, 0, 917534, 0, 0, 917540, 0, 0, 983070, 0, 0, 983076, 0, 0, 1048606, 0, 0, 1048612, 0, 0, 1114142, 0, 0, 1114143, 0, 0, 1114144, 0, 0, 1114145, 0, 0, 1114146, 0, 0, 1114147, 0, 0, 1114148, 0, 0 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1611.86, 763.274 )
@@ -92,6 +137,81 @@ text = "CANCEL"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="LobbyCustomization" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Background" type="ColorRect" parent="LobbyCustomization"]
+self_modulate = Color( 1, 1, 1, 0.196078 )
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -381.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Title" type="Label" parent="LobbyCustomization/Background"]
+anchor_left = 0.499264
+anchor_top = 0.000294698
+anchor_right = 0.5
+anchor_bottom = 0.000294698
+margin_left = -145.716
+margin_top = 6.73477
+margin_right = 149.0
+margin_bottom = 64.7348
+custom_fonts/font = SubResource( 4 )
+text = "CUSTOMIZATION"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TypePills" type="Control" parent="LobbyCustomization/Background"]
+margin_left = 21.0
+margin_top = 78.0
+margin_right = 357.0
+margin_bottom = 166.0
+
+[node name="Pill_body_colors" type="Button" parent="LobbyCustomization/Background/TypePills"]
+margin_left = 10.0793
+margin_right = 70.0793
+margin_bottom = 24.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "COLORS"
+
+[node name="Pill_body_equip" type="Button" parent="LobbyCustomization/Background/TypePills"]
+margin_left = 102.049
+margin_right = 143.049
+margin_bottom = 24.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "BODY"
+
+[node name="Pill_eyes" type="Button" parent="LobbyCustomization/Background/TypePills"]
+margin_left = 173.758
+margin_right = 214.758
+margin_bottom = 24.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "EYES"
+
+[node name="Pill_eyes_color" type="Button" parent="LobbyCustomization/Background/TypePills"]
+margin_left = 243.054
+margin_right = 284.054
+margin_bottom = 24.0
+custom_styles/hover = SubResource( 8 )
+custom_styles/pressed = SubResource( 9 )
+custom_styles/normal = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
+text = "EYE COLOR"
 [connection signal="pressed" from="ButtonOpenWorld" to="." method="_on_ButtonOpenWorld_pressed"]
 [connection signal="pressed" from="ButtonMatchmaking" to="." method="_on_ButtonMatchmaking_pressed"]
 [connection signal="pressed" from="ButtonCancelQueue" to="." method="_on_ButtonCancelQueue_pressed"]
