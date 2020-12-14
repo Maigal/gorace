@@ -60,7 +60,6 @@ func room_result(result):
 	get_tree().call_group("roomUI", "room_result", result)
 
 func open_room():
-	print('opening room')
 	$RoomStartBlock.queue_free()
 	
 func quit_room():

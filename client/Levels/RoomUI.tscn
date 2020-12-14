@@ -3,13 +3,13 @@
 [ext_resource path="res://assets/norwester.otf" type="DynamicFontData" id=1]
 [ext_resource path="res://Levels/RoomUI.gd" type="Script" id=2]
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=1]
 size = 120
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=2]
 resource_name = "Countdown"
 length = 4.25
 step = 0.25
@@ -56,7 +56,7 @@ tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 3.75 ),
+"times": PoolRealArray( 3.5 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -64,13 +64,13 @@ tracks/3/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="DynamicFont" id=3]
 size = 72
 outline_size = 5
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id=4]
 resource_name = "ResultLose"
 length = 3.0
 tracks/0/type = "value"
@@ -136,7 +136,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=5]
 length = 3.0
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:self_modulate")
@@ -201,7 +201,7 @@ tracks/4/keys = {
 } ]
 }
 
-[sub_resource type="DynamicFont" id=4]
+[sub_resource type="DynamicFont" id=6]
 size = 80
 font_data = ExtResource( 1 )
 
@@ -235,7 +235,6 @@ __meta__ = {
 }
 
 [node name="Countdown" type="Label" parent="CountdownGroup/CountdownWrapper"]
-self_modulate = Color( 1, 1, 1, 0 )
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -244,8 +243,8 @@ margin_left = -75.0
 margin_top = -145.5
 margin_right = 75.0
 margin_bottom = 145.5
-custom_fonts/font = SubResource( 5 )
-text = "3"
+custom_fonts/font = SubResource( 1 )
+text = "GO!"
 align = 1
 valign = 1
 __meta__ = {
@@ -253,7 +252,7 @@ __meta__ = {
 }
 
 [node name="CountdownAnimation" type="AnimationPlayer" parent="CountdownGroup/CountdownWrapper"]
-anims/Countdown = SubResource( 7 )
+anims/Countdown = SubResource( 2 )
 
 [node name="ResultWrapper" type="ColorRect" parent="."]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -275,7 +274,7 @@ margin_top = -66.0001
 margin_right = 59.9999
 margin_bottom = 20.9999
 rect_pivot_offset = Vector2( 115.858, 44.69 )
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "YOU LOSE"
 align = 1
@@ -285,8 +284,8 @@ __meta__ = {
 }
 
 [node name="ResultAnimation" type="AnimationPlayer" parent="ResultWrapper"]
-anims/ResultLose = SubResource( 6 )
-anims/ResultWin = SubResource( 3 )
+anims/ResultLose = SubResource( 4 )
+anims/ResultWin = SubResource( 5 )
 
 [node name="ButtonQuitRoom" type="Button" parent="."]
 anchor_left = 1.0
@@ -295,7 +294,7 @@ margin_left = -81.0498
 margin_top = 2.66969
 margin_right = -3.0498
 margin_bottom = 104.67
-custom_fonts/font = SubResource( 4 )
+custom_fonts/font = SubResource( 6 )
 toggle_mode = true
 text = "X"
 __meta__ = {

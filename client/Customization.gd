@@ -37,9 +37,9 @@ func change_eyes_color(colorIndex):
 	customization.eyes_color = colorIndex
 	
 	if customizationData.eyes[customization.eyes].animated:
-		$Body/Eyes_Animated.self_modulate = customizationData.eyes_colors[customization["eyes_color"]]
+		$Body/Eyes_Animated.self_modulate = customizationData.eyes_colors[customization["eyes_color"]].color
 	else:
-		$Body/Eyes.self_modulate = customizationData.eyes_colors[customization["eyes_color"]]
+		$Body/Eyes.self_modulate = customizationData.eyes_colors[customization["eyes_color"]].color
 	
 	print('modu', $Body/Eyes.self_modulate)
 	
