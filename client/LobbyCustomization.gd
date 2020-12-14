@@ -29,6 +29,10 @@ func populate_category():
 
 func selected_item(index):
 	print('selected item index: ', index)
+	var data = {}
+	data[selectedCategory] = index
+	
+	get_tree().call_group('player', 'get_player_customization_data', data)
 
 
 func _on_Change_Category_pressed(arg):

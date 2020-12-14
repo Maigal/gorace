@@ -233,8 +233,8 @@ __meta__ = {
 
 [node name="GridContainer" type="GridContainer" parent="LobbyCustomization/Background/ScrollContainer"]
 custom_constants/vseparation = 50
-custom_constants/hseparation = 50
-columns = 3
+custom_constants/hseparation = 10
+columns = 4
 [connection signal="pressed" from="ButtonOpenWorld" to="." method="_on_ButtonOpenWorld_pressed"]
 [connection signal="pressed" from="ButtonMatchmaking" to="." method="_on_ButtonMatchmaking_pressed"]
 [connection signal="pressed" from="ButtonCancelQueue" to="." method="_on_ButtonCancelQueue_pressed"]

@@ -28,13 +28,27 @@ var current_animation = "idle"
 var isDead = false
 
 func get_player_customization_data(data):
-	if data.nickname:
+	if data.has('nickname'):
 		nickname = data.nickname
 		
-	$Rig.change_body_equip(data.body_equip)
-	$Rig.change_eyes(data.eyes)
-	$Rig.change_body_color(data.body_color)
-	$Rig.change_eyes_color(data.eyes_color)
+	if data.has('body_equip'):
+		$Rig.change_body_equip(data.body_equip)
+		
+	if data.has('body_equips'):
+		$Rig.change_body_equip(data.body_equips)
+		
+	if data.has('eyes'):
+		$Rig.change_eyes(data.eyes)
+		
+	if data.has('body_color'):
+		$Rig.change_body_color(data.body_color)
+		
+	if data.has('body_colors'):
+		$Rig.change_body_color(data.body_colors)
+		
+	if data.has('eyes_color'):
+		$Rig.change_eyes_color(data.eyes_color)
+
 
 func _ready():
 	pass
