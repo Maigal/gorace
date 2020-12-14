@@ -1,7 +1,5 @@
 extends Node2D
 
-
-
 var customization = {
 	body_equip = 0,
 	body_color = 0,
@@ -9,7 +7,6 @@ var customization = {
 	eyes_color = 0,
 	nickname = ""
 }
-
 
 func change_eyes(eyeIndex):
 	customization.eyes = eyeIndex
@@ -21,6 +18,7 @@ func change_eyes(eyeIndex):
 		$Body/Eyes.texture = customizationData.eyes[customization["eyes"]].resource
 		$Body/Eyes.show()
 		$Body/Eyes_Animated.hide()
+	change_eyes_color(customization.eyes_color)
 		
 	
 func change_body_equip(eyeIndex):

@@ -127,6 +127,27 @@ func get_player_data():
 	}
 	return data
 	
+func get_player_customization_data():
+	return player_customization
+	
+func update_customization_data(data):
+	if data.has('body_equip'):
+		player_customization.body_equip = data.body_equip
+	if data.has('body_equips'):
+		player_customization.body_equip = data.body_equips
+	if data.has('eyes'):
+		player_customization.eyes = data.eyes
+	if data.has('body_color'):
+		player_customization.body_color = data.body_color
+	if data.has('body_colors'):
+		player_customization.body_color = data.body_colors
+	if data.has('eyes_color'):
+		player_customization.eyes_color = data.eyes_color
+	if data.has('eyes_colors'):
+		player_customization.eyes_color = data.eyes_colors
+		
+	get_tree().call_group('player', 'get_player_customization_data', player_customization)
+	
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals
 	# emission will only happen when calling this function.
