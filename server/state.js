@@ -1,5 +1,6 @@
 const RoomVersus =  require('./Classes/RoomVersus');
 const RoomOpenWorld =  require('./Classes/RoomOpenWorld');
+const db = require('./db');
 
 const roomData = {
   openWorld: [
@@ -18,6 +19,15 @@ const roomData = {
 
 module.exports = {
   onlinePlayers: [],
+  disconnectPlayer: function(playerId) {
+    const player = this.onlinePlayers.find(player => player.id === playerId)
+    const user = db.get('users')
+    .find({ id: player.id })
+    .value()
+    console.log('user: ', user)
+    this.onlinePlayers = this.onlinePlayers.filter(player => player.id !== playerId)
+    //console.log('remaining players: ', this.onlinePlayers)
+  },
   rooms: {
     openWorld: {
       'AAAA': new RoomOpenWorld({

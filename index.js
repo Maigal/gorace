@@ -135,7 +135,7 @@ wss.on('connection', function connection(ws) {
       state.matchmaking.versus = state.matchmaking.versus.filter(player => player.id !== ws.playerId)
     }
 
-    state.onlinePlayers = state.onlinePlayers.filter(player => player.id !== ws.playerId)
+    state.disconnectPlayer(ws.playerId)
     
   });
 })
