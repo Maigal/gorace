@@ -39,5 +39,3 @@ func left_queue():
 	$MatchmakingText.hide()
 	$ButtonCancelQueue.hide()
 
-
-

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Lobby.gd" type="Script" id=1]
 [ext_resource path="res://Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Levels/tileset.tres" type="TileSet" id=3]
 [ext_resource path="res://assets/norwester.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://LobbyCustomization.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 48
@@ -138,8 +139,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LobbyCustomization" type="CanvasLayer" parent="."]
+[node name="LobbyCustomization" type="CanvasLayer" parent="." groups=[
+"lobbyCustomization",
+]]
 layer = -1
+script = ExtResource( 5 )
 
 [node name="Background" type="ColorRect" parent="LobbyCustomization"]
 self_modulate = Color( 1, 1, 1, 0.196078 )
@@ -167,15 +171,18 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TypePills" type="Control" parent="LobbyCustomization/Background"]
+[node name="Categories" type="Control" parent="LobbyCustomization/Background"]
 margin_left = 21.0
 margin_top = 78.0
 margin_right = 357.0
 margin_bottom = 166.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Pill_body_colors" type="Button" parent="LobbyCustomization/Background/TypePills"]
-margin_left = 10.0793
-margin_right = 70.0793
+[node name="Pill_body_colors" type="Button" parent="LobbyCustomization/Background/Categories"]
+margin_left = 13.6149
+margin_right = 73.6149
 margin_bottom = 24.0
 custom_styles/hover = SubResource( 8 )
 custom_styles/pressed = SubResource( 9 )
@@ -183,7 +190,7 @@ custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "COLORS"
 
-[node name="Pill_body_equip" type="Button" parent="LobbyCustomization/Background/TypePills"]
+[node name="Pill_body_equips" type="Button" parent="LobbyCustomization/Background/Categories"]
 margin_left = 102.049
 margin_right = 143.049
 margin_bottom = 24.0
@@ -193,7 +200,7 @@ custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "BODY"
 
-[node name="Pill_eyes" type="Button" parent="LobbyCustomization/Background/TypePills"]
+[node name="Pill_eyes" type="Button" parent="LobbyCustomization/Background/Categories"]
 margin_left = 173.758
 margin_right = 214.758
 margin_bottom = 24.0
@@ -203,7 +210,7 @@ custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "EYES"
 
-[node name="Pill_eyes_color" type="Button" parent="LobbyCustomization/Background/TypePills"]
+[node name="Pill_eyes_color" type="Button" parent="LobbyCustomization/Background/Categories"]
 margin_left = 243.054
 margin_right = 284.054
 margin_bottom = 24.0
@@ -212,6 +219,26 @@ custom_styles/pressed = SubResource( 9 )
 custom_styles/normal = SubResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "EYE COLOR"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="LobbyCustomization/Background"]
+anchor_top = 0.132
+anchor_bottom = 0.132
+margin_left = 32.0
+margin_top = 34.2
+margin_right = 357.0
+margin_bottom = 404.2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="LobbyCustomization/Background/ScrollContainer"]
+custom_constants/vseparation = 50
+custom_constants/hseparation = 50
+columns = 3
 [connection signal="pressed" from="ButtonOpenWorld" to="." method="_on_ButtonOpenWorld_pressed"]
 [connection signal="pressed" from="ButtonMatchmaking" to="." method="_on_ButtonMatchmaking_pressed"]
 [connection signal="pressed" from="ButtonCancelQueue" to="." method="_on_ButtonCancelQueue_pressed"]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_body_colors" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "body_colors" ]]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_body_equips" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "body_equips" ]]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_eyes" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "eyes" ]]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_eyes_color" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "eyes_color" ]]

@@ -14,6 +14,8 @@ var player_customization = {
 	eyes = 0,
 	eyes_color = 0
 }
+
+
 #var player_customization_body_color
 #var player_customization_eyes
 
