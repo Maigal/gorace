@@ -147,6 +147,11 @@ func update_customization_data(data):
 		player_customization.eyes_color = data.eyes_colors
 		
 	get_tree().call_group('player', 'get_player_customization_data', player_customization)
+	var message = {
+		type = "update_customization",
+		customization = player_customization
+	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
 	
 func _process(delta):
 	# Call this in _process or _physics_process. Data transfer, and signals

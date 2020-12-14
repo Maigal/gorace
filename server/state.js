@@ -23,10 +23,9 @@ module.exports = {
     const player = this.onlinePlayers.find(player => player.id === playerId)
     const user = db.get('users')
     .find({ id: player.id })
-    .value()
-    console.log('user: ', user)
+    user.assign({customization: player.customization})
+    .write()
     this.onlinePlayers = this.onlinePlayers.filter(player => player.id !== playerId)
-    //console.log('remaining players: ', this.onlinePlayers)
   },
   rooms: {
     openWorld: {

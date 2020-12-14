@@ -6,7 +6,8 @@ const path = require('path');
 
 const LoginModule = require('./Server/Events/Login');
 const RoomModule = require('./Server/Events/Room');
-const state = require('./Server/state')
+const state = require('./Server/state');
+const { onlinePlayers } = require('./Server/state');
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';
@@ -91,7 +92,13 @@ wss.on('connection', function connection(ws) {
       case "entered_room_goal":
         const finishRoomData = RoomModule.enterGoal(ws, msg.roomType, msg.roomCode)
         break;
-      
+
+      case "update_customization":
+        const playerIndex = onlinePlayers.findIndex(player => player.id === ws.playerId)
+        onlinePlayers[playerIndex].customization = msg.customization
+        console.log('op: ', onlinePlayers)
+        break;
+
       case "update_position":
         const updatedPositionData = RoomModule.updatePosition(ws, msg.x, msg.y, msg.animation, msg.dir)
         break;
