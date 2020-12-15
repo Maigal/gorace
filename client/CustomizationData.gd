@@ -78,10 +78,18 @@ var eyes_colors = [
 	},
 	{
 		id = 1,
+		description = "White eyes",
+		color = Color(1,1,1,1),
+		animated = false,
+		img = "res://Sprites/Player/Customization/Colors/0_list.png",
+		rarity = 0
+	},
+	{
+		id = 2,
 		description = "Red eyes",
 		color = Color(1,0,0,1),
 		animated = false,
 		img = "res://Sprites/Player/Customization/Eye_Colors/1_list.png",
-		rarity = 0
+		rarity = 1
 	}
 ]

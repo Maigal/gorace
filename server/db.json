@@ -23,7 +23,7 @@
       "exp": 0,
       "customization": {
         "body_color": 1,
-        "body_equip": 0,
+        "body_equip": 1,
         "eyes": 1,
         "eyes_color": 1
       }

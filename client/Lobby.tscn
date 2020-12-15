@@ -29,18 +29,7 @@ outline_color = Color( 0, 0, 0, 1 )
 use_filter = true
 font_data = ExtResource( 4 )
 
-[sub_resource type="StyleBoxFlat" id=8]
-bg_color = Color( 0.309804, 0.32549, 0.411765, 1 )
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-expand_margin_left = 5.0
-expand_margin_right = 5.0
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id=9]
+[sub_resource type="StyleBoxFlat" id=5]
 bg_color = Color( 0.309804, 0.32549, 0.411765, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -52,6 +41,17 @@ expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
 [sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.309804, 0.32549, 0.411765, 1 )
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+expand_margin_left = 5.0
+expand_margin_right = 5.0
+expand_margin_top = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.196078, 0.196078, 0.196078, 1 )
 corner_radius_top_left = 10
 corner_radius_top_right = 10
@@ -62,7 +62,7 @@ expand_margin_right = 5.0
 expand_margin_top = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=8]
 size = 20
 use_filter = true
 font_data = ExtResource( 4 )
@@ -185,10 +185,10 @@ margin_left = 13.6149
 margin_right = 73.6149
 margin_bottom = 24.0
 focus_mode = 0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "COLORS"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,10 +199,10 @@ margin_left = 102.049
 margin_right = 143.049
 margin_bottom = 24.0
 focus_mode = 0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "BODY"
 
 [node name="Pill_eyes" type="Button" parent="LobbyCustomization/Background/Categories"]
@@ -210,10 +210,10 @@ margin_left = 173.758
 margin_right = 214.758
 margin_bottom = 24.0
 focus_mode = 0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "EYES"
 
 [node name="Pill_eyes_colors" type="Button" parent="LobbyCustomization/Background/Categories"]
@@ -221,10 +221,10 @@ margin_left = 243.054
 margin_right = 284.054
 margin_bottom = 24.0
 focus_mode = 0
-custom_styles/hover = SubResource( 8 )
-custom_styles/pressed = SubResource( 9 )
-custom_styles/normal = SubResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
 text = "EYE COLOR"
 __meta__ = {
 "_edit_use_anchors_": false
