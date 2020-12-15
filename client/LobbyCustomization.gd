@@ -6,7 +6,7 @@ var available_items = {
 	body_equips = [0,1,2],
 	eyes = [0,1,2],
 	eyes_colors = [0,1,2],
-	head = [0,1]
+	head = [0,1,2]
 }
 
 var selectedCategory = "body_colors"

@@ -114,9 +114,17 @@ var head = [
 	{
 		id = 1,
 		animated = false,
-		description = "None",
+		description = "Horns",
 		resource = load("res://Sprites/Player/Customization/Head/1.png"),
-		img = "",
+		img = "res://Sprites/Player/Customization/Head/1_list.png",
 		rarity = 1
+	},
+	{
+		id = 2,
+		animated = true,
+		description = "Unicorn",
+		resource = load("res://Sprites/Player/Customization/Head/2.tres"),
+		img = "res://Sprites/Player/Customization/Head/2_list.png",
+		rarity = 3
 	}
 ]

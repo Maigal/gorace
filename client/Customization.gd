@@ -28,7 +28,14 @@ func change_body_equip(eyeIndex):
 	
 func change_head(headIndex):
 	customization.head = headIndex
-	$Body/Head.texture = customizationData.head[customization["head"]].resource
+	if customizationData.head[customization.head].animated:
+		$Body/Head_Animated.show()
+		$Body/Head.hide()
+		$Body/Head_Animated.frames = customizationData.head[customization["head"]].resource
+	else:
+		$Body/Head_Animated.hide()
+		$Body/Head.show()
+		$Body/Head.texture = customizationData.head[customization["head"]].resource
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex

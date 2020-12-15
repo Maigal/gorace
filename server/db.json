@@ -8,11 +8,11 @@
       "level": 1,
       "exp": 0,
       "customization": {
-        "body_color": 0,
+        "body_color": 1,
         "body_equip": 1,
         "eyes": 0,
         "eyes_color": 2,
-        "head": 0
+        "head": 2
       }
     },
     {

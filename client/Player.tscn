@@ -567,7 +567,7 @@ texture = ExtResource( 3 )
 [node name="Eyes_Animated" type="AnimatedSprite" parent="Rig/Body"]
 position = Vector2( 1.625, -2.375 )
 frames = ExtResource( 9 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Body_Equip" type="Sprite" parent="Rig/Body"]
@@ -577,6 +577,10 @@ texture = ExtResource( 8 )
 [node name="Head" type="Sprite" parent="Rig/Body"]
 position = Vector2( 0, -13.011 )
 texture = ExtResource( 10 )
+
+[node name="Head_Animated" type="AnimatedSprite" parent="Rig/Body"]
+position = Vector2( 0, -13.011 )
+playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 4.79775 )
