@@ -552,11 +552,21 @@ z_as_relative = false
 texture = ExtResource( 2 )
 offset = Vector2( 0, 5 )
 
+[node name="PantsL" type="Sprite" parent="Rig/Body/Leg_Left"]
+z_index = 1
+z_as_relative = false
+offset = Vector2( 0, 5 )
+
 [node name="Leg_Right" type="Sprite" parent="Rig/Body"]
 position = Vector2( 8, 11.805 )
 z_index = 1
 z_as_relative = false
 texture = ExtResource( 2 )
+offset = Vector2( 0, 5 )
+
+[node name="PantsR" type="Sprite" parent="Rig/Body/Leg_Right"]
+z_index = 1
+z_as_relative = false
 offset = Vector2( 0, 5 )
 
 [node name="Eyes" type="Sprite" parent="Rig/Body"]

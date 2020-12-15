@@ -129,7 +129,7 @@ var head = [
 	}
 ]
 
-var effect = [
+var pants = [
 	{
 		id = 0,
 		animated = false,
@@ -141,10 +141,10 @@ var effect = [
 	{
 		id = 1,
 		animated = false,
-		description = "Glow",
-		resource = load("res://Sprites/Player/Customization/Head/1.png"),
-		img = "res://Sprites/Player/Customization/Effect/1_list.png",
+		description = "Pajama",
+		resource = load("res://Sprites/Player/Customization/Pants/1.png"),
+		img = "",
 		rarity = 1
-	},
+	}
 ]
 

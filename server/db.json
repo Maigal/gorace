@@ -12,7 +12,8 @@
         "body_equip": 0,
         "eyes": 0,
         "eyes_color": 2,
-        "head": 2
+        "head": 2,
+        "pants": 0
       }
     },
     {
@@ -27,7 +28,8 @@
         "body_equip": 0,
         "eyes": 1,
         "eyes_color": 2,
-        "head": 0
+        "head": 0,
+        "pants": 0
       }
     },
     {
@@ -42,7 +44,8 @@
         "body_equip": 1,
         "eyes": 2,
         "eyes_color": 0,
-        "head": 0
+        "head": 0,
+        "pants": 0
       }
     }
   ]

@@ -6,7 +6,8 @@ var available_items = {
 	body_equips = [0,1,2],
 	eyes = [0,1,2],
 	eyes_colors = [0,1,2],
-	head = [0,1,2]
+	head = [0,1,2],
+	pants = [0,1]
 }
 
 var selectedCategory = "body_colors"
@@ -52,6 +53,7 @@ func selected_item(index):
 
 
 func _on_Change_Category_pressed(arg):
+	print('arg: ', arg)
 	selectedCategory = arg
 	for category in $Background/Categories.get_children():
 		category.self_modulate = Color(1,1,1,1)

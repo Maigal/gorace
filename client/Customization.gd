@@ -6,6 +6,7 @@ var customization = {
 	eyes = 0,
 	eyes_color = 0,
 	head = 0,
+	pants = 0,
 	nickname = ""
 }
 
@@ -36,6 +37,11 @@ func change_head(headIndex):
 		$Body/Head_Animated.hide()
 		$Body/Head.show()
 		$Body/Head.texture = customizationData.head[customization["head"]].resource
+		
+func change_pants(pantsIndex):
+	customization.pants = pantsIndex
+	$Body/Leg_Left/PantsL.texture = customizationData.pants[customization["pants"]].resource
+	$Body/Leg_Right/PantsR.texture = customizationData.pants[customization["pants"]].resource
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex

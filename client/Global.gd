@@ -13,7 +13,8 @@ var player_customization = {
 	body_equip = 0,
 	eyes = 0,
 	eyes_color = 0,
-	head = 0
+	head = 0,
+	pants = 0
 }
 
 
@@ -82,6 +83,7 @@ func _on_data():
 				player_customization.eyes = parsedData.customization.eyes
 				player_customization.eyes_color = parsedData.customization.eyes_color
 				player_customization.head = parsedData.customization.head
+				player_customization.pants = parsedData.customization.pants
 				get_tree().change_scene("res://Lobby.tscn")
 			elif parsedData.status == "error":
 				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
@@ -126,7 +128,8 @@ func get_player_data():
 		body_equip = player_customization.body_equip,
 		eyes = player_customization.eyes,
 		eyes_color = player_customization.eyes_color,
-		head = player_customization.head
+		head = player_customization.head,
+		pants = player_customization.pants
 	}
 	return data
 	
@@ -150,6 +153,8 @@ func update_customization_data(data):
 		player_customization.eyes_color = data.eyes_colors
 	if data.has('head'):
 		player_customization.head = data.head
+	if data.has('pants'):
+		player_customization.pants = data.pants
 		
 	get_tree().call_group('player', 'get_player_customization_data', player_customization)
 	var message = {
@@ -217,7 +222,8 @@ func on_joined_room():
 		body_equip = player_customization.body_equip,
 		eyes = player_customization.eyes,
 		eyes_color = player_customization.eyes_color,
-		head = player_customization.head
+		head = player_customization.head,
+		pants = player_customization.pants
 	}
 	get_tree().call_group("player", "get_player_customization_data", data)
 	
