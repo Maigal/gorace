@@ -34,6 +34,7 @@ func populate_category():
 		$Background/ScrollContainer/GridContainer.add_child(instancedItem)
 
 func selected_item(index):
+	print('cchanged')
 	var data = {}
 	data[selectedCategory] = index
 	

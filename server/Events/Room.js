@@ -41,7 +41,6 @@ module.exports = {
   },
 
   leave(ws, roomType, roomCode) {
-    console.log('leavinggg')
     let player = state.onlinePlayers.find(u => u.id === ws.playerId)
     let playerIndex = state.onlinePlayers.findIndex(u => u.id === ws.playerId)
 
