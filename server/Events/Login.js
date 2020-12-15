@@ -6,6 +6,7 @@ module.exports = {
 
   login(ws, username, password) {
     let dbUser = db.getUserFromDB(username)
+    console.log('dbuser: ', dbUser)
     if (dbUser) {
       if (dbUser.password === password) {
         if (!state.onlinePlayers.find(user => user.id === dbUser.id)) {
@@ -42,6 +43,7 @@ module.exports = {
         }
       }
     } else {
+      console.log('no encuentro username?')
       return {
         status: "error",
         error_message: "Username does not exist!"

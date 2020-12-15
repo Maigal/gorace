@@ -1,8 +1,9 @@
 extends CanvasLayer
 
+
 var available_items = {
 	body_colors = [0,1],
-	body_equips = [0,1],
+	body_equips = [0,1,2],
 	eyes = [0,1,2],
 	eyes_colors = [0,1,2]
 }
@@ -14,10 +15,18 @@ onready var list_item = preload("res://Misc/ListItem.tscn")
 func _ready():
 	_on_Change_Category_pressed('body_colors')
 	
+func rarity_sorter(a, b):
+	if customizationData[selectedCategory][a].rarity < customizationData[selectedCategory][b].rarity:
+		return true
+	return false
+	
 func populate_category():		
 	for oldItem in $Background/ScrollContainer/GridContainer.get_children():
 		oldItem.queue_free()
-	for item in available_items[selectedCategory]:
+	var items = available_items[selectedCategory]
+	items.sort_custom(self, "rarity_sorter")
+	print(items)
+	for item in items:
 		var itemData = customizationData[selectedCategory][item]
 		var instancedItem = list_item.instance()
 		instancedItem.name = "ListItem" + str(itemData.id)

@@ -7,7 +7,7 @@
 [ext_resource path="res://Death/DeathController.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Misc/ScreenShake.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Customization.gd" type="Script" id=7]
-[ext_resource path="res://Sprites/Player/Customization/Body/1.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Player/Customization/Body/2.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Player/Customization/Eyes/2.tres" type="SpriteFrames" id=9]
 
 [sub_resource type="CapsuleShape2D" id=1]
@@ -566,15 +566,15 @@ texture = ExtResource( 3 )
 [node name="Eyes_Animated" type="AnimatedSprite" parent="Rig/Body"]
 position = Vector2( 1.625, -2.375 )
 frames = ExtResource( 9 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Body_Equip" type="Sprite" parent="Rig/Body"]
-position = Vector2( 0, 8.13785 )
+position = Vector2( 0, 9.02173 )
 texture = ExtResource( 8 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 4.4 )
+position = Vector2( 0, 4.79775 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

@@ -22,8 +22,12 @@ module.exports = {
   disconnectPlayer: function(playerId) {
     const player = this.onlinePlayers.find(player => player.id === playerId)
 
-    db.saveLogoutSettings(player)
-    this.onlinePlayers = this.onlinePlayers.filter(player => player.id !== playerId)
+    if (player) {
+      db.saveLogoutSettings(player)
+      this.onlinePlayers = this.onlinePlayers.filter(player => player.id !== playerId)
+    }
+
+    
   },
   rooms: {
     openWorld: {

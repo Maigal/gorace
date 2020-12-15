@@ -16,6 +16,14 @@ var body_equips = [
 		animated = false,
 		img = "res://Sprites/Player/Customization/Body/1_list.png",
 		rarity = 3
+	},
+	{
+		id = 2,
+		description = "Chainmail",
+		resource = load("res://Sprites/Player/Customization/Body/2.png"),
+		animated = false,
+		img = "res://Sprites/Player/Customization/Body/2_list.png",
+		rarity = 1
 	}
 ]
 
