@@ -143,7 +143,7 @@ var pants = [
 		animated = false,
 		description = "Pajama",
 		resource = load("res://Sprites/Player/Customization/Pants/1.png"),
-		img = "",
+		img = "res://Sprites/Player/Customization/Pants/1_list.png",
 		rarity = 1
 	}
 ]
