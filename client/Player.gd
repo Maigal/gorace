@@ -51,6 +51,9 @@ func get_player_customization_data(data):
 		
 	if data.has('eyes_colors'):
 		$Rig.change_eyes_color(data.eyes_colors)
+		
+	if data.has('head'):
+		$Rig.change_head(data.head)
 
 
 func _ready():

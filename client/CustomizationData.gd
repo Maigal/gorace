@@ -101,3 +101,22 @@ var eyes_colors = [
 		rarity = 1
 	}
 ]
+
+var head = [
+	{
+		id = 0,
+		animated = false,
+		description = "None",
+		resource = null,
+		img = "",
+		rarity = 0
+	},
+	{
+		id = 1,
+		animated = false,
+		description = "None",
+		resource = load("res://Sprites/Player/Customization/Head/1.png"),
+		img = "",
+		rarity = 1
+	}
+]

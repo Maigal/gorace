@@ -8,10 +8,11 @@
       "level": 1,
       "exp": 0,
       "customization": {
-        "body_color": 1,
+        "body_color": 0,
         "body_equip": 1,
         "eyes": 0,
-        "eyes_color": 2
+        "eyes_color": 2,
+        "head": 0
       }
     },
     {
@@ -25,7 +26,8 @@
         "body_color": 0,
         "body_equip": 0,
         "eyes": 1,
-        "eyes_color": 2
+        "eyes_color": 2,
+        "head": 0
       }
     },
     {
@@ -39,35 +41,8 @@
         "body_color": 0,
         "body_equip": 1,
         "eyes": 2,
-        "eyes_color": 0
-      }
-    },
-    {
-      "id": 3,
-      "username": "d",
-      "password": "d",
-      "nickname": "d",
-      "level": 1,
-      "exp": 0,
-      "customization": {
-        "body_color": 0,
-        "body_equip": 0,
-        "eyes": 0,
-        "eyes_color": 0
-      }
-    },
-    {
-      "id": 4,
-      "username": "e",
-      "password": "e",
-      "nickname": "e",
-      "level": 1,
-      "exp": 0,
-      "customization": {
-        "body_color": 0,
-        "body_equip": 0,
-        "eyes": 0,
-        "eyes_color": 0
+        "eyes_color": 0,
+        "head": 0
       }
     }
   ]

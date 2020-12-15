@@ -230,13 +230,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pill_head" type="Button" parent="LobbyCustomization/Background/Categories"]
+margin_left = 14.0
+margin_top = 47.0
+margin_right = 56.0
+margin_bottom = 71.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+text = "HEAD"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="LobbyCustomization/Background"]
 anchor_top = 0.132
 anchor_bottom = 0.132
-margin_left = 32.0
-margin_top = 34.2
-margin_right = 357.0
-margin_bottom = 404.2
+margin_left = 31.0
+margin_top = 56.8588
+margin_right = 356.0
+margin_bottom = 426.859
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -252,3 +266,4 @@ columns = 4
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_body_equips" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "body_equips" ]]
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_eyes" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "eyes" ]]
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_eyes_colors" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "eyes_colors" ]]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_head" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "head" ]]

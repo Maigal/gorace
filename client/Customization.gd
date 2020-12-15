@@ -5,6 +5,7 @@ var customization = {
 	body_color = 0,
 	eyes = 0,
 	eyes_color = 0,
+	head = 0,
 	nickname = ""
 }
 
@@ -24,6 +25,10 @@ func change_eyes(eyeIndex):
 func change_body_equip(eyeIndex):
 	customization.body_equip = eyeIndex
 	$Body/Body_Equip.texture = customizationData.body_equips[customization["body_equip"]].resource
+	
+func change_head(headIndex):
+	customization.head = headIndex
+	$Body/Head.texture = customizationData.head[customization["head"]].resource
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex
