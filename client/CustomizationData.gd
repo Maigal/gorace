@@ -128,3 +128,23 @@ var head = [
 		rarity = 3
 	}
 ]
+
+var effect = [
+	{
+		id = 0,
+		animated = false,
+		description = "None",
+		resource = null,
+		img = "",
+		rarity = 0
+	},
+	{
+		id = 1,
+		animated = false,
+		description = "Glow",
+		resource = load("res://Sprites/Player/Customization/Head/1.png"),
+		img = "res://Sprites/Player/Customization/Effect/1_list.png",
+		rarity = 1
+	},
+]
+

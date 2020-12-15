@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://PlayerOther.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Player/leg.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Customization.gd" type="Script" id=6]
 [ext_resource path="res://Sprites/Player/Customization/Body/1.png" type="Texture" id=7]
 [ext_resource path="res://Sprites/Player/Customization/Eyes/2.tres" type="SpriteFrames" id=8]
+[ext_resource path="res://Sprites/Player/Customization/Head/1.png" type="Texture" id=9]
 
 [sub_resource type="Animation" id=1]
 resource_name = "fall"
@@ -540,7 +541,15 @@ texture = ExtResource( 7 )
 [node name="Eyes_Animated" type="AnimatedSprite" parent="Rig/Body"]
 position = Vector2( 1.625, -2.375 )
 frames = ExtResource( 8 )
-frame = 3
+frame = 1
+playing = true
+
+[node name="Head" type="Sprite" parent="Rig/Body"]
+position = Vector2( 0, -13.011 )
+texture = ExtResource( 9 )
+
+[node name="Head_Animated" type="AnimatedSprite" parent="Rig/Body"]
+position = Vector2( 0, -13.011 )
 playing = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
