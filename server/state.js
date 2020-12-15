@@ -21,10 +21,8 @@ module.exports = {
   onlinePlayers: [],
   disconnectPlayer: function(playerId) {
     const player = this.onlinePlayers.find(player => player.id === playerId)
-    const user = db.get('users')
-    .find({ id: player.id })
-    user.assign({customization: player.customization})
-    .write()
+
+    db.saveLogoutSettings(player)
     this.onlinePlayers = this.onlinePlayers.filter(player => player.id !== playerId)
   },
   rooms: {

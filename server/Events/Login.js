@@ -5,7 +5,7 @@ const Player = require('../Classes/Player');
 module.exports = {
 
   login(ws, username, password) {
-    let dbUser = db.get('users').find({username: username}).value();
+    let dbUser = db.getUserFromDB(username)
     if (dbUser) {
       if (dbUser.password === password) {
         if (!state.onlinePlayers.find(user => user.id === dbUser.id)) {

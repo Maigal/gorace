@@ -1,5 +1,3 @@
-const db = require('../db.js');
-const { onlinePlayers } = require('../state.js');
 let state = require('../state.js')
 
 module.exports = {
