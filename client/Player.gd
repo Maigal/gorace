@@ -30,6 +30,8 @@ var isDead = false
 func get_player_customization_data(data):
 	if data.has('nickname'):
 		nickname = data.nickname
+	if data.has('pattern'):
+		$Rig.change_pattern(data.pattern)	
 	if data.has('body_equip'):
 		$Rig.change_body_equip(data.body_equip)
 	if data.has('body_equips'):

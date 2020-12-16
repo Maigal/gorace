@@ -2,12 +2,13 @@ extends CanvasLayer
 
 
 var available_items = {
-	body_colors = [0,1],
+	body_colors = [0,1,2],
 	body_equips = [0,1,2],
 	eyes = [0,1,2],
 	eyes_colors = [0,1,2],
 	head = [0,1,2],
-	pants = [0,1]
+	pants = [0,1],
+	pattern = [0,1]
 }
 
 var selectedCategory = "body_colors"

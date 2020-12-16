@@ -172,9 +172,9 @@ __meta__ = {
 }
 
 [node name="Categories" type="Control" parent="LobbyCustomization/Background"]
-margin_left = 21.0
+margin_left = 21.6674
 margin_top = 78.0
-margin_right = 357.0
+margin_right = 357.667
 margin_bottom = 166.0
 __meta__ = {
 "_edit_use_anchors_": false
@@ -263,6 +263,21 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="Pill_pattern" type="Button" parent="LobbyCustomization/Background/Categories"]
+margin_left = 190.866
+margin_top = 44.3303
+margin_right = 261.866
+margin_bottom = 68.3303
+focus_mode = 0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/normal = SubResource( 7 )
+custom_fonts/font = SubResource( 8 )
+text = "PATTERN"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="ScrollContainer" type="ScrollContainer" parent="LobbyCustomization/Background"]
 anchor_top = 0.132
 anchor_bottom = 0.132
@@ -287,3 +302,4 @@ columns = 4
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_eyes_colors" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "eyes_colors" ]]
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_head" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "head" ]]
 [connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_pants" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "pants" ]]
+[connection signal="pressed" from="LobbyCustomization/Background/Categories/Pill_pattern" to="LobbyCustomization" method="_on_Change_Category_pressed" binds= [ "pattern" ]]

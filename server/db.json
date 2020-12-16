@@ -13,7 +13,8 @@
         "eyes": 0,
         "eyes_color": 2,
         "head": 2,
-        "pants": 1
+        "pants": 1,
+        "pattern": 1
       }
     },
     {
@@ -29,7 +30,8 @@
         "eyes": 1,
         "eyes_color": 2,
         "head": 0,
-        "pants": 0
+        "pants": 0,
+        "pattern": 0
       }
     },
     {
@@ -45,7 +47,8 @@
         "eyes": 2,
         "eyes_color": 0,
         "head": 0,
-        "pants": 0
+        "pants": 0,
+        "pattern": 0
       }
     }
   ]

@@ -7,8 +7,15 @@ var customization = {
 	eyes_color = 0,
 	head = 0,
 	pants = 0,
+	pattern = 0,
 	nickname = ""
 }
+
+func change_pattern(patternIndex):
+	print('new pattern')
+	customization.pattern = patternIndex
+	$Body.texture = customizationData.pattern[customization["pattern"]].resource_main
+	$Body/Body_Secondary.texture = customizationData.pattern[customization["pattern"]].resource_secondary
 
 func change_eyes(eyeIndex):
 	customization.eyes = eyeIndex
@@ -45,7 +52,8 @@ func change_pants(pantsIndex):
 
 func change_body_color(colorIndex):
 	customization.body_color = colorIndex
-	$Body.self_modulate = customizationData.body_colors[customization["body_color"]].body
+	$Body.self_modulate = customizationData.body_colors[customization["body_color"]].body_main
+	$Body/Body_Secondary.self_modulate = customizationData.body_colors[customization["body_color"]].body_secondary
 	$Body/Leg_Left.self_modulate = customizationData.body_colors[customization["body_color"]].legs
 	$Body/Leg_Right.self_modulate = customizationData.body_colors[customization["body_color"]].legs
 	
