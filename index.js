@@ -94,10 +94,9 @@ wss.on('connection', function connection(ws) {
         break;
 
       case "update_customization":
-        console.log('cus msg', msg)
         const playerIndex = onlinePlayers.findIndex(player => player.id === ws.playerId)
 
-        if (playerIndex >= 0 && playerIndex.customization) {
+        if (playerIndex >= 0 && onlinePlayers[playerIndex].customization) {
           onlinePlayers[playerIndex].customization = msg.customization
         }
         break;
