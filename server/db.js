@@ -31,6 +31,11 @@ const db = {
 
     user.assign({customization: parsedData.customization})
     .write()
+  },
+
+  registerUser(username, password) {
+    const user = database.get('users').find({ username: username }).value()
+    // ?
   }
 }
 
