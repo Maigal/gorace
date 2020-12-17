@@ -14,7 +14,7 @@
         "eyes_color": 2,
         "head": 2,
         "pants": 1,
-        "pattern": 1
+        "pattern": 0
       }
     },
     {
@@ -101,6 +101,23 @@
         "pattern": 0
       },
       "id": 5
+    },
+    {
+      "username": "123456789123",
+      "password": "123",
+      "nickname": "123456789123",
+      "level": 1,
+      "exp": 0,
+      "customization": {
+        "body_color": 0,
+        "body_equip": 0,
+        "eyes": 0,
+        "eyes_color": 0,
+        "head": 0,
+        "pants": 0,
+        "pattern": 0
+      },
+      "id": 6
     }
   ]
 }

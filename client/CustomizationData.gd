@@ -1,5 +1,7 @@
 extends Node
 
+var show_names = true
+
 var body_equips = [
 	{
 		id = 0,
