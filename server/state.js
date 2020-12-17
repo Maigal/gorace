@@ -1,5 +1,5 @@
-const RoomVersus =  require('./Classes/RoomVersus');
-const RoomOpenWorld =  require('./Classes/RoomOpenWorld');
+const RoomVersus =  require('./classes/roomVersus');
+const RoomOpenWorld =  require('./classes/roomOpenWorld');
 const db = require('./db');
 
 const roomData = {

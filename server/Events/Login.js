@@ -1,6 +1,6 @@
 const db = require('../db.js')
 let state = require('../state.js')
-const Player = require('../Classes/Player');
+const Player = require('../classes/player');
 
 module.exports = {
 

@@ -4,9 +4,9 @@ const express = require('express')
 const app = express();
 const path = require('path');
 
-const LoginModule = require('./Server/Events/Login');
-const RoomModule = require('./Server/Events/Room');
-const state = require('./Server/state');
+const LoginModule = require('./server/events/login');
+const RoomModule = require('./server/events/room');
+const state = require('./server/state');
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';

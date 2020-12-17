@@ -1,5 +1,5 @@
 let state = require('../state.js')
-let Matchmaking = require('./Matchmaking.js')
+let Matchmaking = require('./matchmaking.js')
 
 module.exports = {
 
