@@ -1,4 +1,4 @@
-const Room = require("./Room");
+const Room = require("./room");
 
 const STATUS = {
   WAITING: 'waiting',
