@@ -16,7 +16,7 @@ let connectionId = 0
 let connectedPlayers = []
 
 const server = express()
-  .use(express.static(path.join(__dirname, './client')))
+  .use(express.static(path.join(__dirname, './public')))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
