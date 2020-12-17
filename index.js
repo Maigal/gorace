@@ -4,7 +4,7 @@ const express = require('express')
 const app = express();
 const path = require('path');
 
-const LoginModule = require('./server/events/login.js');
+const LoginModule = require('./server/events/login');
 const RoomModule = require('./server/events/room');
 const state = require('./server/state');
  
