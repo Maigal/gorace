@@ -55,6 +55,11 @@ wss.on('connection', function connection(ws) {
         ws.send(JSON.stringify({type: "login", ...loginResult}))
         break;
 
+      case "register":
+        const registerResult = LoginModule.register(ws, msg.username, msg.password)
+        ws.send(JSON.stringify({type: "registered", ...registerResult}))
+        break;
+
       case "join_room":
         const joinRoomResult = RoomModule.join(ws, msg.roomType, msg.roomCode)
         ws.send(JSON.stringify({type: "join_room", ...joinRoomResult}))
@@ -73,6 +78,7 @@ wss.on('connection', function connection(ws) {
       case "joined_room":
         const joinedRoomData = RoomModule.joined(ws, msg.roomType, msg.roomCode)
         //console.log('joinr', joinedRoomData)
+        console.log('op', state.onlinePlayers)
         if (joinedRoomData.status === "success") {
           setTimeout(() => ws.send(JSON.stringify({type: "create_other_players", players: joinedRoomData.otherPlayers.map(op => op.baseDataParsedForClient())})), 100)
           

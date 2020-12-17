@@ -4,6 +4,23 @@ const FileSync = require('lowdb/adapters/FileSync')
 const adapter = new FileSync(__dirname + '/db.json')
 const database = low(adapter)
 
+const userTemplate = {
+  "username": "",
+  "password": "",
+  "nickname": "",
+  "level": 1,
+  "exp": 0,
+  "customization": {
+    "body_color": 0,
+    "body_equip": 0,
+    "eyes": 0,
+    "eyes_color": 0,
+    "head": 0,
+    "pants": 0,
+    "pattern": 0
+  }
+}
+
 const db = {
 
   getUserFromDB(username) {
@@ -33,9 +50,25 @@ const db = {
     .write()
   },
 
-  registerUser(username, password) {
-    const user = database.get('users').find({ username: username }).value()
-    // ?
+  createUser(username, password) {
+    const length = database.get('users').size().value()
+
+    const user = userTemplate
+    user.username = username
+    user.nickname = username
+    user.password = password
+    user.id = length
+
+    database
+    .get('users')
+    .push(user)
+    .write()
+
+    if (this.getUserFromDB(username)) {
+      return true
+    } else {
+      return false
+    }
   }
 }
 

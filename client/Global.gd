@@ -89,6 +89,11 @@ func _on_data():
 				get_tree().change_scene("res://Lobby.tscn")
 			elif parsedData.status == "error":
 				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
+		"registered":
+			if parsedData.status == "success":
+				get_tree().call_group("login", "get_login_success_message", parsedData.success_message)
+			elif parsedData.status == "error":
+				get_tree().call_group("login", "get_login_error_message", parsedData.error_message)
 		"join_room":
 			if parsedData.status == "success":
 				roomType = parsedData.roomType
@@ -191,6 +196,14 @@ func _process(delta):
 func on_pressed_login(username, password):
 	var message = {
 		type = "login",
+		username = username,
+		password = password
+	}
+	_client.get_peer(1).put_packet(JSON.print(message).to_utf8())
+	
+func on_pressed_register(username, password):
+	var message = {
+		type = "register",
 		username = username,
 		password = password
 	}

@@ -25,6 +25,7 @@
   "homepage": "https://github.com/Maigal/gorace#readme",
   "dependencies": {
     "express": "^4.17.1",
+    "lodash-id": "^0.14.0",
     "lowdb": "^1.0.0",
     "ws": "^7.4.0"
   }

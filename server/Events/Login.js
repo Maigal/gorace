@@ -49,5 +49,24 @@ module.exports = {
         error_message: "Username does not exist!"
       }
     }
+  },
+
+  register(ws, username, password) {
+    let dbUser = db.getUserFromDB(username)
+    console.log('dbuser: ', dbUser)
+    if (!dbUser) {
+      let createdUser = db.createUser(username, password)
+      if (createdUser) {
+        return {
+          status: "success",
+          success_message: "User created successfully!"
+        }
+      }
+    } else {
+      return {
+        status: "error",
+        error_message: "Username already exists!"
+      }
+    }
   }
 };

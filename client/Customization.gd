@@ -68,4 +68,4 @@ func change_eyes_color(colorIndex):
 	print('modu', $Body/Eyes.self_modulate)
 	
 func get_body_colors():
-	return customizationData.body_colors[customization["body_color"]].body
+	return customizationData.body_colors[customization["body_color"]].body_main

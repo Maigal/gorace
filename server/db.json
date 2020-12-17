@@ -50,6 +50,57 @@
         "pants": 0,
         "pattern": 0
       }
+    },
+    {
+      "username": "q",
+      "password": "q",
+      "nickname": "q",
+      "level": 1,
+      "exp": 0,
+      "customization": {
+        "body_color": 0,
+        "body_equip": 0,
+        "eyes": 0,
+        "eyes_color": 0,
+        "head": 0,
+        "pants": 0,
+        "pattern": 0
+      },
+      "id": 4
+    },
+    {
+      "username": "q",
+      "password": "q",
+      "nickname": "q",
+      "level": 1,
+      "exp": 0,
+      "customization": {
+        "body_color": 0,
+        "body_equip": 0,
+        "eyes": 0,
+        "eyes_color": 0,
+        "head": 0,
+        "pants": 0,
+        "pattern": 0
+      },
+      "id": 4
+    },
+    {
+      "username": "mati",
+      "password": "mati",
+      "nickname": "mati",
+      "level": 1,
+      "exp": 0,
+      "customization": {
+        "body_color": 0,
+        "body_equip": 0,
+        "eyes": 0,
+        "eyes_color": 0,
+        "head": 0,
+        "pants": 0,
+        "pattern": 0
+      },
+      "id": 5
     }
   ]
 }

@@ -39,11 +39,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -100.0
-margin_top = -100.0
-margin_right = 110.0
-margin_bottom = 177.0
-custom_constants/separation = 6
+margin_left = -105.0
+margin_top = -190.5
+margin_right = 105.0
+margin_bottom = 190.5
+custom_constants/separation = 10
 alignment = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,9 +59,9 @@ __meta__ = {
 }
 
 [node name="InputUsername" type="LineEdit" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 64.0
+margin_top = 68.0
 margin_right = 210.0
-margin_bottom = 114.0
+margin_bottom = 118.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -70,16 +70,16 @@ max_length = 12
 caret_blink = true
 
 [node name="LabelPassword" type="Label" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 120.0
+margin_top = 128.0
 margin_right = 210.0
-margin_bottom = 178.0
+margin_bottom = 186.0
 custom_fonts/font = ExtResource( 1 )
 text = "PASSWORD"
 
 [node name="InputPassword" type="LineEdit" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 184.0
+margin_top = 196.0
 margin_right = 210.0
-margin_bottom = 234.0
+margin_bottom = 246.0
 rect_min_size = Vector2( 0, 50 )
 custom_styles/normal = SubResource( 1 )
 custom_fonts/font = SubResource( 2 )
@@ -89,31 +89,41 @@ secret = true
 secret_character = "#"
 
 [node name="VSplitContainer" type="VSplitContainer" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 240.0
+margin_top = 256.0
 margin_right = 210.0
-margin_bottom = 245.0
+margin_bottom = 261.0
 rect_min_size = Vector2( 0, 5 )
 
-[node name="Button" type="Button" parent="CanvasLayer/ColorRect/Container"]
-margin_top = 251.0
+[node name="ButtonLogin" type="Button" parent="CanvasLayer/ColorRect/Container"]
+margin_top = 271.0
 margin_right = 210.0
-margin_bottom = 301.0
+margin_bottom = 321.0
 custom_fonts/font = SubResource( 3 )
 text = "Login"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="ErrorMessage" type="Label" parent="CanvasLayer/ColorRect"]
-modulate = Color( 0.462745, 0.137255, 0.137255, 1 )
+[node name="Register" type="Button" parent="CanvasLayer/ColorRect/Container"]
+margin_top = 331.0
+margin_right = 210.0
+margin_bottom = 381.0
+custom_fonts/font = SubResource( 3 )
+text = "Register"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Message" type="Label" parent="CanvasLayer/ColorRect"]
+modulate = Color( 0.490196, 0.690196, 0.309804, 1 )
 anchor_left = 0.503
 anchor_top = 0.758
 anchor_right = 0.504
 anchor_bottom = 0.758
 margin_left = -198.839
-margin_top = -19.5281
+margin_top = -14.4827
 margin_right = 199.361
-margin_bottom = 19.4719
+margin_bottom = 24.5173
 custom_fonts/font = SubResource( 4 )
 align = 1
 valign = 1
@@ -121,4 +131,5 @@ autowrap = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
-[connection signal="pressed" from="CanvasLayer/ColorRect/Container/Button" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Container/ButtonLogin" to="." method="_on_Button_pressed"]
+[connection signal="pressed" from="CanvasLayer/ColorRect/Container/Register" to="." method="_on_Register_pressed"]

@@ -7,6 +7,8 @@ var isDead = false
 onready var anim_player = $AnimationPlayer
 
 func get_other_player_customization_data(data):
+	if data.has('pattern'):
+		$Rig.change_pattern(data.pattern)	
 	if data.has('body_equip'):
 		$Rig.change_body_equip(data.body_equip)
 	if data.has('body_equips'):
