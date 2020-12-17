@@ -13,11 +13,7 @@ module.exports = {
         state.onlinePlayers[playerIndex].roomType = roomType
         state.onlinePlayers[playerIndex].roomCode = roomCode
         
-        if (roomType === "versus") {
-          targetRoom.addPlayer(player)
-        } else {
-          targetRoom.players.push(player)
-        }
+        targetRoom.addPlayer(player)
         
         return {
           status: "success",

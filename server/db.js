@@ -37,14 +37,9 @@ const db = {
 
     Object.keys(player.customization).forEach(key => {
       if (typeof player.customization[key] === "number") {
-        console.log('int :', key)
         parsedData.customization[key] = player.customization[key]
-      } else {
-        console.log('not int')
-      }
+      } 
     })
-
-    console.log('new cust :', player.customization)
 
     user.assign({customization: parsedData.customization})
     .write()

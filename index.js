@@ -7,7 +7,6 @@ const path = require('path');
 const LoginModule = require('./Server/Events/Login');
 const RoomModule = require('./Server/Events/Room');
 const state = require('./Server/state');
-const { onlinePlayers } = require('./Server/state');
  
 const PORT =  process.env.PORT || 3000
 const INDEX = '/client/index.html';
@@ -78,7 +77,6 @@ wss.on('connection', function connection(ws) {
       case "joined_room":
         const joinedRoomData = RoomModule.joined(ws, msg.roomType, msg.roomCode)
         //console.log('joinr', joinedRoomData)
-        console.log('op', state.onlinePlayers)
         if (joinedRoomData.status === "success") {
           setTimeout(() => ws.send(JSON.stringify({type: "create_other_players", players: joinedRoomData.otherPlayers.map(op => op.baseDataParsedForClient())})), 100)
           
@@ -100,10 +98,11 @@ wss.on('connection', function connection(ws) {
         break;
 
       case "update_customization":
-        const playerIndex = onlinePlayers.findIndex(player => player.id === ws.playerId)
+        const playerIndex = state.onlinePlayers.findIndex(player => player.id === ws.playerId)
 
-        if (playerIndex >= 0 && onlinePlayers[playerIndex].customization) {
-          onlinePlayers[playerIndex].customization = msg.customization
+        if (playerIndex >= 0 && state.onlinePlayers[playerIndex].customization) {
+          
+          state.onlinePlayers[playerIndex].customization = msg.customization
         }
         break;
 
