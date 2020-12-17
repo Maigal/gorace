@@ -9,14 +9,14 @@ const RoomModule = require('./server/events/room');
 const state = require('./server/state');
  
 const PORT =  process.env.PORT || 3000
-const INDEX = '/client/index.html';
+const INDEX = '/public/index.html';
 
 
 let connectionId = 0
 let connectedPlayers = []
 
 const server = express()
-  .use(express.static('./public'))
+  .use(express.static(path.join(__dirname, INDEX)))
   .listen(PORT, () => console.log(`Listening on ${PORT}`));
 
 
