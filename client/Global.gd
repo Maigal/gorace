@@ -1,7 +1,7 @@
 extends Node
 
-#export var websocket_url = "wss://127.0.0.1:3000"
-export var websocket_url = "wss://platracer.herokuapp.com"
+export var websocket_url = "wss://127.0.0.1:3000"
+#export var websocket_url = "wss://platracer.herokuapp.com"
 
 var _client = WebSocketClient.new()
 
